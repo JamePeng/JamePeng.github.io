@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="JamePeng的个人博客">
 <meta property="og:description" content="关于WOA设备使用FFU固件刷机操作的中文指引 by JamePeng gus33000作者的原文链接 Thank you, gus33000!   前言：本文引用于gus33000作者的 《Instructions of FFU Firmwares for WOA Devices》 为了国内用户方便阅读, 我就把他原文大意翻译了, 然后增加了一些关键地方的注解，方便大家理解 之所以本人那么强烈地">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-10T14:09:42.030Z">
+<meta property="og:updated_time" content="2019-06-03T14:50:05.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于WOA设备使用FFU固件刷机操作的中文指引">
 <meta name="twitter:description" content="关于WOA设备使用FFU固件刷机操作的中文指引 by JamePeng gus33000作者的原文链接 Thank you, gus33000!   前言：本文引用于gus33000作者的 《Instructions of FFU Firmwares for WOA Devices》 为了国内用户方便阅读, 我就把他原文大意翻译了, 然后增加了一些关键地方的注解，方便大家理解 之所以本人那么强烈地">
@@ -188,13 +188,26 @@
 <p><font size="3">&emsp;2.通过使用WPinternals工具中的switch mode[切换模式]区域中的Flash mode[刷机模式]功能，让设备进入Flash mode的刷机模式</font></p>
 <p><font size="3">关闭 WPinternals工具</font></p>
 <p><strong>在Windows Device Recovery Tool的安装路径下运行命令行程序：</strong></p>
-<p><font size="3">两种办法：</font></p>
-<p><font size="3">&emsp;(1) 在该安装路径目录下，按住shift，然后鼠标右键空白区域，选择[在此处打开命令窗口]的选项</font></p>
+<p><font size="3">两种办法：<br><font size="3">&emsp;(1) 在该安装路径目录下，按住shift，然后鼠标右键空白区域，选择[在此处打开命令窗口]的选项</font></font></p>
 <p><font size="3">&emsp;(2) <strong>WIN + R</strong>, 输入 <strong>cmd</strong>, 默认 <strong>cmd</strong> 路径在 <strong>c</strong> 盘的某个路径下;<br>   输入以下命令即可:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> <span class="string">"C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool"</span></span><br></pre></td></tr></table></figure></font></p>
-<p><strong>运行以下的命令行进行刷机操作:</strong></p>
-<p><font size="3">1.擦除Data分区数据,可以释放掉W10M所占用的空间<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ thor2.exe -mode retail -erasepartition Data</span><br></pre></td></tr></table></figure></font></p>
-<p><font size="3">2.刷写ffu文件,后面尖括号的位置是指定ffu的文件路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ thor2.exe -mode uefiflash -ffufile &lt;path to downloaded ffu file&gt;</span><br></pre></td></tr></table></figure></font></p>
-<p><font size="3">3.刷写完成后,运行该指令重启设备<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thor2.exe -mode rnd -reboot</span><br></pre></td></tr></table></figure></font></p>
+<p><strong>首次刷机操作:运行以下的命令行进行刷机操作:</strong></p>
+<p><font size="3">1.擦除Data分区数据,可以释放掉W10M所占用的空间</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ thor2.exe -mode retail -erasepartition Data</span><br></pre></td></tr></table></figure>
+
+<p><font size="3">2.刷写ffu文件,后面尖括号的位置是指定ffu的文件路径</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ thor2.exe -mode uefiflash -ffufile &lt;path to downloaded ffu file&gt;</span><br></pre></td></tr></table></figure>
+
+<p><font size="3">3.刷写完成后,运行该指令重启设备</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thor2.exe -mode rnd -reboot</span><br></pre></td></tr></table></figure>
+
+<p><strong>后续更新刷机操作:运行以下的命令行进行刷机操作:</strong></p>
+<p><font size="3">1.使用WPInternals的 interrupt the boot-process 功能, 即设备引导过程中断以进入flash模式</font></p>
+<p><font size="3">2.刷写ffu文件,后面尖括号的位置是指定ffu的文件路径</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ thor2.exe -mode uefiflash -ffufile &lt;path to downloaded ffu file&gt;</span><br></pre></td></tr></table></figure>
+
+<p><font size="3">3.刷写完成后,运行该指令重启设备</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thor2.exe -mode rnd -reboot</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p><font size="3">1.刷机前请确保您的设备是充满电或者60%以上的电量</font></p>
 <p><font size="3">2.FFU镜像中保留了一种进入mass storage模式的简易方式, 即在设备引导阶段按住音量下键可以打开Developer menu[开发者菜单]。</font></p>
@@ -214,7 +227,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2019/05/10/Instructions-FFU/" data-id="cjvi3yfgy0000voubtj6viasm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2019/05/10/Instructions-FFU/" data-id="cjwghy1a000008cw8p9rfar4o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -290,7 +303,7 @@
         "genre": "",
         "datePublished": "2019-05-10",
         "dateCreated": "2019-05-10",
-        "dateModified": "2019-05-10",
+        "dateModified": "2019-06-03",
         "url": "http://yoursite.com/2019/05/10/Instructions-FFU/",
         "description": "关于WOA设备使用FFU固件刷机操作的中文指引 by JamePeng
 gus33000作者的原文链接
@@ -299,7 +312,7 @@ Thank you, gus33000!
 前言：本文引用于gus33000作者的 《Instructions of FFU Firmwares for WOA Devices》
 为了国内用户方便阅读, 我就把他原文大意翻译了, 然后增加了一些关键地方的注解，方便大家理解
 之所以本人那么强烈地"
-        "wordCount": 187
+        "wordCount": 219
     }
 </script>
 
