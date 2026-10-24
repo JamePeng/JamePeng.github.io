@@ -1,0 +1,222 @@
+<div class="article-body"><p class="article-lead">最近我一直在关注 Looped Transformers。</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymlYnWSlhNiafHV2aVZLsJIic5oJrCpIyaxkQpa2Xlt6EMbKrxQtwI57sLtibt77lg9AhxSEOQq2cjcvNWIoWVLCDjXHz3KgibykOfU/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=0" alt="最近我一直在关注 Looped Transformers。 · 原文配图">
+  </figure><p>
+    它让我感兴趣的地方，不只是“把同一组 Transformer 层重复跑很多次”这么简单。
+    真正值得关注的是另外一个问题：
+  </p><blockquote>
+    <p>
+      如果一个模型可以对同一份内部状态反复加工，
+      那么这些重复计算之间，到底发生了什么？ 是在机械地多算几遍？
+      还是说，模型真的形成了一条类似“思考轨迹”的东西？
+    </p>
+  </blockquote><p>
+    最近一篇论文《Decoding Looped Transformers Better for (Almost)
+    Free》给出了一个非常有意思的答案。
+  </p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymmIhqHDrIeicQAHydPq4wtmZfS9FTNozLN1ge7jv4E2z8aWOK4aoMKIZhhvtYTYBgwicmYvpViafQAPywsNIxT2p1QSDjueoQy0vM/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=1" alt="最近我一直在关注 Looped Transformers。 · 原文配图">
+  </figure><blockquote class="article-takeaway">
+    <p>
+      它发现： 模型早期循环和后期循环之间的差异，本身就是一种有价值的信息。
+      甚至可以直接拿来提高模型的推理结果。
+    </p>
+  </blockquote><h2 id="section-4">一、什么是 Looped Transformer？</h2><p>传统 Transformer 可以简单理解成：</p><pre><code>输入 → 第1层 → 第2层 → 第3层 → …… → 输出</code></pre><p>每一层都有自己独立的参数。 而 Looped Transformer 不一样。 它更像：</p><pre><code>输入 → 同一个计算模块 → 再算一次 → 再算一次 → 再算一次 → 输出</code></pre><p>也就是说，同一组参数被重复使用。 如果写得更直观一点：</p><pre><code>第1轮状态 → 第2轮状态 → 第3轮状态 → …… → 最终状态</code></pre><p>
+    这里最有趣的地方在于： 这些中间状态并不是废料。
+    模型第1轮已经有一个初步判断，第4轮可能更准确，第8轮又进一步修正。
+  </p><p>这就有一点像人思考问题：</p><ul>
+    <li>“我最开始觉得是 A。”</li>
+    <li>“等等，可能不对。”</li>
+    <li>“结合另外一个条件，应该是 B。”</li>
+    <li>“再检查一下，B 更合理。”</li>
+  </ul><p>Looped Transformer 把这种“不断修正内部状态”的过程，搬进了神经网络内部。</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymlOic7EMfE6ZXWsscj2QI7DNeFYweSiaUX3KJACPob4cCDnJU8tZeiaqlVw6NJqojoib7BD7fSv8ywR2BaLaZNW4LHygrt5OMgc7IA/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=2" alt="一、什么是 Looped Transformer？ · 原文配图">
+  </figure><h2 id="section-7">二、一个很反直觉的发现：早期“错误答案”也有价值</h2><p>通常我们运行一个模型，只关心最后一次计算结果。 比如循环 16 次：</p><pre><code>h1 → h2 → h3 → …… → h16</code></pre><p>
+    最后只保留 h16。 前面的 h1 到 h15 全部丢掉。 但 LoopCD
+    这篇论文提出了一个很有意思的问题：
+  </p><blockquote><p>为什么要丢掉？</p></blockquote><p>因为 h1 其实代表了：</p><blockquote><p>“模型少思考一点时会怎么回答。”</p></blockquote><p>而 h16 代表：</p><blockquote><p>“模型多思考一会儿之后会怎么回答。”</p></blockquote><p>于是：</p><pre><code>最终状态 - 早期状态</code></pre><p>
+    实际上就在告诉我们： 额外的计算，到底让模型改变了什么。 举个简单的例子。
+  </p><div class="article-comparison">
+    <section class="comparison-panel">
+      <p>模型最开始觉得：</p>
+      <ul>
+        <li>A：40%</li>
+        <li>B：38%</li>
+        <li>C：22%</li>
+      </ul>
+    </section>
+    <section class="comparison-panel">
+      <p>经过更多循环以后变成：</p>
+      <ul>
+        <li>A：55%</li>
+        <li>B：28%</li>
+        <li>C：17%</li>
+      </ul>
+    </section>
+  </div><p>那么额外计算明显在做一件事： 提高 A，降低 B 和 C。</p><blockquote class="article-takeaway">
+    <p>
+      LoopCD 的想法非常简单：
+      既然模型一直在往这个方向修正，为什么不顺着这个方向再推一点？
+      这就是它的核心。
+    </p>
+  </blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymkVyZBiar7M88FRrj0n91CNzLh948zALmnxj0iaefThhlqNlxoyv2EKJQcJSfhJ25WoblAtL36ficjMnd186xkibb6mh4Tqon4vfpk/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=3" alt="二、一个很反直觉的发现：早期“错误答案”也有价值 · 原文配图">
+  </figure><h2 id="section-10">三、LoopCD 本质上是在问：多想一会儿，到底改变了什么？</h2><p>我觉得可以用一句话概括 LoopCD：</p><blockquote><p>“把模型多思考几轮产生的变化方向，再利用一次。”</p></blockquote><p>如果把早期状态叫 Weak，最终状态叫 Strong，那么：</p><pre><code>Strong - Weak</code></pre><p>就是“额外计算产生的变化”。 然后 LoopCD 做的是：</p><pre><code>Strong + 一点点这个变化方向</code></pre><p>
+    这也是为什么它几乎不需要训练新的模型。
+    早期模型和后期模型，本质上就是同一个模型。
+    只是一个“少算了几轮”，一个“多算了几轮”。
+  </p><p>
+    这件事其实很妙。 因为过去我们经常把“模型能力”理解成一个静态东西。 但在
+    Looped Transformer 里面，能力开始和“计算时间”绑定起来了。
+  </p><p>不是简单地： 这个模型聪不聪明。 而是：</p><ul>
+    <li>给它 2 轮计算时，它想到这里。</li>
+    <li>给它 8 轮计算时，它想到那里。</li>
+  </ul><blockquote>
+    <p>那么这两者之间的差异，就是“额外思考带来的增量”。</p>
+  </blockquote><h2 id="section-13">四、这其实和 Contrastive Decoding 很像</h2><p>Contrastive Decoding 的经典思路，是准备两个模型：</p><ul>
+    <li>一个弱模型。</li>
+    <li>一个强模型。</li>
+  </ul><p>
+    比如： 小模型认为某个词很合理。 大模型却认为另外一个词更合理。
+    那么两者之间的差异，往往能反映出“大模型真正多学到了什么”。
+  </p><p>简单来说：</p><pre><code>强模型 - 弱模型</code></pre><p>
+    得到一个能力差异。 LoopCD 做的事情非常像。 但它甚至不需要两个模型。
+    它直接把：
+  </p><ul>
+    <li>早期循环，当成弱模型。</li>
+    <li>后期循环，当成强模型。</li>
+  </ul><p>于是就变成：</p><pre><code>少量计算的自己
+对比
+更多计算的自己。</code></pre><p>我觉得可以把它称作一种：</p><blockquote>
+    <p>
+      “Self-Contrastive Decoding”。 模型在和“刚才那个还没想明白的自己”做对比。
+    </p>
+  </blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymnTw4RDx8A61S6jmUBf6OnajXQ1m2quzelQhgVM976ibXdRlphopX65zWs1qnobLEJPQzg89BoUUyiaBvgbc80r2SpiclicPiaQb58c/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=4" alt="四、这其实和 Contrastive Decoding 很像 · 原文配图">
+  </figure><h2 id="section-16">五、它和 DoLa 又有什么区别？</h2><p>
+    DoLa 也是一个很有意思的方法。 它观察普通 Transformer 的浅层和深层。
+    浅层可能还只是形成一些比较粗糙的判断。 越往深层，语义和知识逐渐成熟。
+  </p><p>所以 DoLa 会比较：</p><pre><code>浅层预测
+和
+深层预测</code></pre><p>
+    然后利用两者的差异帮助解码。 这和 LoopCD 非常像。 但两者有一个关键区别。
+  </p><p>普通 Transformer 是：</p><pre><code>Layer 1 → Layer 2 → Layer 3</code></pre><p>每一层都不一样。 Looped Transformer 则是：</p><pre><code>同一个 Block → 同一个 Block → 同一个 Block</code></pre><p>也就是说，DoLa 看的是：</p><blockquote><p>“模型不同加工阶段之间有什么差别。”</p></blockquote><p>而 LoopCD 看的是：</p><blockquote>
+    <p>“同一个计算规则多执行几次以后，状态发生了什么变化。”</p>
+  </blockquote><p>后者其实更像“迭代”。 也更接近我们通常理解的“思考过程”。</p><h2 id="section-19">六、为什么我觉得它和 diffusion 的 CFG 也很像？</h2><p>
+    如果你用过 Stable Diffusion，一定听说过 CFG，也就是 Classifier-Free
+    Guidance。 它里面有两个预测：
+  </p><ul>
+    <li>一个是不带提示词条件的预测。</li>
+    <li>一个是带提示词条件的预测。</li>
+  </ul><p>然后用：</p><pre><code>Conditional - Unconditional</code></pre><p>
+    得到“提示词到底改变了什么”。 再把这个方向放大一点。
+    最终生成结果就会更符合提示词。
+   LoopCD 的逻辑几乎一样。</p><div class="article-comparison">
+    <section class="comparison-panel">
+      <p>只不过它比较的不是：</p>
+      <p>有条件 vs 无条件</p>
+    </section>
+    <section class="comparison-panel">
+      <p>而是：</p>
+      <p>多计算 vs 少计算</p>
+    </section>
+  </div><p>所以可以这样理解：</p><blockquote><p>CFG 在问： “加上条件以后，模型改变了什么？”</p></blockquote><blockquote><p>LoopCD 在问： “多想几轮以后，模型改变了什么？”</p></blockquote><p>这是我觉得非常值得关注的统一视角。 它们背后都在利用一种“差分”。</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymmxMd3YF70oAtUsbSKZzIiclKvicCqF5w9ZbghLRITibUvrqyKCN4skHP3c29jhAhMo1umFrEEbUM2SzZFWgQVfGFia39EzuARRggY/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=5" alt="六、为什么我觉得它和 diffusion 的 CFG 也很像？ · 原文配图">
+  </figure><h2 id="section-22">七、真正让我感兴趣的是：这个差分是不是“思考方向”？</h2><p>
+    这里开始进入更有意思的部分。 假设 Looped Transformer
+    每一次循环都产生一个内部状态：
+  </p><pre><code>h1
+h2
+h3
+h4
+……</code></pre><p>那么：</p><pre><code>h2 - h1</code></pre><p>表示第2轮相对第1轮改变了什么。</p><pre><code>h3 - h2</code></pre><p>表示第3轮又改变了什么。</p><p>如果这些变化不是随机的，而是在不断：</p><ul>
+    <li>修正错误。</li>
+    <li>整合约束。</li>
+    <li>完成计算。</li>
+    <li>检查答案。</li>
+  </ul><p>
+    那么这些“状态差分”就可能不只是神经网络内部的数值变化。 它们可能对应一种：
+  </p><blockquote>
+    <p>Latent Reasoning Update。 也就是： 隐空间里的“思考动作”。</p>
+  </blockquote><p>
+    这也是 recurrent latent reasoning 最近越来越有意思的原因。 传统 Chain of
+    Thought 是把推理过程写出来：
+  </p><pre><code>第一步……
+第二步……
+第三步……</code></pre><p>
+    而 latent reasoning 尝试做的是： 不一定把所有步骤变成文字。
+    模型直接在隐藏状态里完成一部分推理。 于是：
+  </p><div class="article-comparison">
+    <section class="comparison-panel">
+      <p>显式 CoT：</p>
+      <p>文字 → 文字 → 文字 → 答案</p>
+    </section>
+    <section class="comparison-panel">
+      <p>可能逐渐变成：</p>
+      <p>Latent State 1 → Latent State 2 → Latent State 3 → 答案</p>
+    </section>
+  </div><p>
+    这时 Looped Transformer 就不再只是一个网络结构。
+    它更像一个“内部反复计算的工作区”。
+  </p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymnB2VBgPP4t0juLJR4JtZe4tyIKhELRVMVA33YQcC35g3BmIm1GJA0Ke14THYjhOFnEoj7p7yibZbJqf4ibKicwicmf6FSgBJSzy5k/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=6" alt="七、真正让我感兴趣的是：这个差分是不是“思考方向”？ · 原文配图">
+  </figure><h2 id="section-25">
+    八、LoopCD 甚至让我想到一个更激进的方向：预测未来的思考
+  </h2><p>LoopCD 现在做的事情其实还很简单。 它看到：</p><blockquote>
+    <p>模型从 h1 走到了 h8。 于是根据 h1 → h8 的方向，再往前推一点。</p>
+  </blockquote><p>
+    这其实很像物理里的“速度”。
+    如果一个物体过去一直往右移动，我们可以预测它下一刻大概率还会继续往右。
+    那么未来是不是可以进一步研究：
+  </p><ul>
+    <li>不仅看模型现在在哪里。</li>
+    <li>还看它的“速度”。</li>
+    <li>甚至看它的“加速度”。</li>
+  </ul><p>比如：</p><ul>
+    <li>第6轮到第7轮改变了什么。</li>
+    <li>第7轮到第8轮改变了什么。</li>
+  </ul><blockquote>
+    <p>
+      如果两个方向越来越一致，我们是不是可以直接预测：
+      第9轮、第10轮、第11轮可能到哪里？
+    </p>
+  </blockquote><p>这样就可能出现一种非常有趣的计算方式：</p><ul>
+    <li>只真正运行一部分循环。</li>
+    <li>剩下几轮，不完全计算。</li>
+    <li>而是预测它的 latent trajectory。</li>
+  </ul><p>也就是：</p><pre><code>真实计算 + 虚拟计算。</code></pre><p>从这个角度看，LoopCD 可能只是最简单的一阶版本。</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymkWBUeM7RlczYt64L6GqbwaI2br2cwwfpkbu9vjWibxblvPUvCYmW5HzAN6oae7FzsTZkMCrKyIJbPpWKbLMY177CTO2JRzXtr4/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=7" alt="八、LoopCD 甚至让我想到一个更激进的方向：预测未来的思考 · 原文配图">
+  </figure><h2 id="section-28">九、所以 Looped Transformer 真正值得关注的是什么？</h2><p>
+    我觉得不是“循环网络重新流行了”。 也不是“模型多跑几遍效果更好”。
+    更值得关注的是： 模型内部可能正在出现一种新的“计算时间”。
+  </p><p>普通 Transformer 的深度更像空间：</p><pre><code>Layer 1、Layer 2、Layer 3。</code></pre><p>而 Looped Transformer 的 recurrence 更像时间：</p><ul>
+    <li>第1次思考。</li>
+    <li>第2次思考。</li>
+    <li>第3次思考。</li>
+    <li>第8次思考。</li>
+  </ul><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymllODIvnh0hOsLkTWo3DxMiaVUCuib7nGMQd1kibAEia03nOOhvJtZuTYWzEHUcyemL4lMibPictkibkiapTyTk0j6mQIT2X96RmNy2U5k/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=8" alt="九、所以 Looped Transformer 真正值得关注的是什么？ · 原文配图">
+  </figure><p>于是我们开始可以研究一个以前很少被单独拿出来讨论的问题：</p><blockquote>
+    <p>多给模型一点计算，它的内部表示到底会往哪里移动？</p>
+  </blockquote><p>这件事情甚至可以写成一句非常有意思的话：</p><blockquote class="article-takeaway">
+    <p>“模型的答案重要，但模型改变答案的方向，可能同样重要。”</p>
+  </blockquote><h2 id="section-31">十、我目前最关注的一个问题</h2><p>LoopCD 已经说明：</p><pre><code>Early Loop → Late Loop</code></pre><p>这条方向是有预测价值的。 但它还没有真正证明： 这个方向就是“推理”。</p><p>因为里面可能混合了很多东西：</p><ul>
+    <li>语义修正。</li>
+    <li>置信度变化。</li>
+    <li>事实回忆。</li>
+    <li>句法调整。</li>
+    <li>答案校准。</li>
+    <li>真正的逻辑推理。</li>
+  </ul><p>所以我觉得接下来最值得研究的问题不是：</p><blockquote><p>LoopCD 还能提高几个点？</p></blockquote><p>而是：</p><blockquote>
+    <p>Looped Transformer 每一轮 hidden state 的变化，到底代表什么？</p>
+  </blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymliaQ00bJkW9y9Ihk9djXKcn4ukmxjIKrYnlXsWn1HXljcLAOYeAo8rtSzcqjy3WXSvfa5atsdL5z6RxC2IMSocSdGx8TzANTMY/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=9" alt="十、我目前最关注的一个问题 · 原文配图">
+  </figure><p>如果未来可以证明：</p><pre><code>h2 - h1
+h3 - h2
+h4 - h3</code></pre><p>这些变化能够稳定对应：</p><ul>
+    <li>理解问题。</li>
+    <li>建立约束。</li>
+    <li>执行计算。</li>
+    <li>验证假设。</li>
+    <li>修正答案。</li>
+  </ul><p>那么意义会非常大。 因为到了那个时候，我们研究的就不再只是：</p><blockquote><p>“模型思考后的结果是什么。”</p></blockquote><p>而是：</p><blockquote>
+    <p>“模型思考这个动作本身，在 latent space 里长什么样。”</p>
+  </blockquote><p>这可能才是 Looped Transformers 真正有意思的地方。</p></div>

@@ -1,0 +1,91 @@
+<div class="article-body"><p class="article-lead">嘿，我是JamePeng，一个不定时月更的up主，最近周末赶上台风天没能出去溜达，今天就突发奇想的把最近给AI结合本地部署的SearXNG搜索引擎过程中的一个想法变成一篇笔记！👋</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRbx0ExtaWibM38wHqedg52o4f2ECFCpShKuibhLiappqB3zDtIiaL0iaOWDQ/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=0" alt="图片"></figure><p>想必大家在本地部署大语言模型的时候，是不是发现<strong>模型</strong>在基于检索匹配的RAG知识问答上相对精准给力，但一涉及到实时互联网实时搜索结果的时候，就发现AI很容易容易被不相干的信息误导，从而“一本正经地胡说八道”，甚至把一些广告营销信息、过时内容等中文互联网垃圾信息池里的文本也当作权威知识引用参考？<br></p><p>这就好比你让一个非常聪明的大学生去图书馆找书，但只告诉他关键词，而不是书的内容主题方向。他可能搬回来一堆标题相关但内容完全跑偏的书，自然无法写出高质量的报告。这可太让人头疼了。</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRDRlMhEibdXK9pgWlN8VG7aCfDWdicdibam7UCrXXiaosiaW9IGL7oJLziavA/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=1" alt="图片"></figure><p>简要介绍一下本人开发的searxng_search项目，它是一个用于本地或局域网部署的 SearXNG docker 的 Python 库，能够帮助你方便地获取“去中心化+自持隐私”的搜索结果，大大降低基于python开发的AI项目添加繁琐的网络通信交互，仅通过简单配置和API调用即可获取搜索结果。<br></p><p>Searxng_Search项目目前更新到了0.1.1，解决了个人本地部署模型经常遇到现有搜索API的rate limit的限制，加入了定量定向搜索和失败重试的机制，让本地大模型可以随时高频获取互联网搜索结果提升回答的准确性，不过实际应用测试中偶尔会出现开头说的信息误导问题。</p><p>deepseek r1官方的建议是：针对网络搜索的提示语加入：</p><pre class="code-snippet__js"><code>并非搜索结果的所有内容都与用户的问题密切相关，你需要结合问题，对搜索结果进行甄别、筛选。</code></pre><pre class="code-snippet__js"><code>你的回答应该综合多个相关网页来回答，不能重复引用一个网页。</code></pre><p>的确，可以使用prompt工程有一定改善，但重复多次使用发现并不稳定，那么有什么办法能稳定提升大模型对搜索结果的使用的精准匹配呢？<br></p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRuGzHwSUsFibJXFUltibNDHZ324iaJ0VpDfnibeIA4nuQ4ibIuhAtJEkBLGA/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=2" alt="图片"></figure><hr><p>揭秘亲测有效的“大模型回复精准度提效秘籍”之前，咱们先介绍一下两个重要的模型工具，就是阿里通义千问最近刚发布的最新专有模型，专门设计用于文本嵌入和排序任务：Qwen3 Embedding 和 Qwen3-Reranker</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsR5J7EWq0A3Vknnq9VN3jIS1Alef1JlfUncRarGDLQgaMPkU3hZA91DA/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=3" alt="图片"></figure><p>Qwen3-Embedding 是一种文本嵌入模型，它的核心任务是将文本（如句子、段落或文档）转换成一个高维度的数值向量（称为嵌入向量或稠密向量）。这些向量捕捉了文本的语义信息，使得语义相似的文本在向量空间中的距离更近。可以理解为判断两端文本语义是否相近。</p><p>Qwen3-Reranker 是一种重排序模型，它的作用是在一个初步检索结果（通常由Embedding模型或传统搜索方法得到）的基础上，对这些结果进行更精细、更准确的相关性排序。它通过对查询和每个文档对进行深度交互式分析来判断它们的相关性，并输出一个精细的相关性分数score，从而对初步检索结果进行更准确的排序。</p><p>这里不对它们的实现原理展开，有需要的话我可以单独再写一篇介绍这两个模型。</p><p>回答一开始的问题，在我们解决了本地模型的互联网搜索瓶颈后，如何提升大模型回复精准度，即使经过&#160;Prompt Engineering，本地模型仍可能将广告营销、过时或不相关内容纳入其思考。这正是因为通用模型对传入字符串tokens的传统关键词匹配、文本精准召回和简单指令筛选不足，难以捕捉来自互联网搜索直接返回结果内容的语义相关性和选择优先度。“大模型回复精准度提效秘籍”方案核心就很明显了。</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRCttxVHRRgIOialPR167qgJfpISY4UOSQDbfnz1hHZv9T7f8icp2ZR7Sw/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=4" alt="图片"></figure><p>通过引入先进的双阶段检索与重排（Dual-Stage Retrieval and Reranking）机制，利用 Qwen3-Embedding 进行初步的语义检索，再通过 Qwen3-Reranker 进行精细的相关性排序，从而确保传递给本地模型的信息是最优质、最相关的。</p><p>我们接下来选用0.6B 参数规模的Qwen3-Embedding 和 Qwen3-Reranker模型作为演示实验使用，如何加载这两个模型可以参考官方的示例。</p><p>可以使用modelscope社区的模型库下载速度快一点：</p><p>https://www.modelscope.cn/models/Qwen/Qwen3-Reranker-0.6B</p><p>https://www.modelscope.cn/models/Qwen/Qwen3-Embedding-0.6B</p><hr><p>构建了一个“两步走”的智能信息筛选流程执行方案</p><p>第一步：海量信息中“捞”出潜力信息（Qwen3-Embedding 粗排）</p><p>就像大海捞针，我们先用 JamePeng 的 searxng_search 工具从 SearXNG 获取大量的原始搜索结果（比如50条甚至更多），这些结果可能五花八门。</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRlwcNAMa8JlE3CMxibYaMPQJy2EhrCUU1qeGZl3juvdl1De3sPb2nkLA/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=5" alt="图片"></figure><p>接着，Qwen3-Embedding 模型登场！它会把你的搜索查询和这批原始结果的标题摘要，都转化为“语义指纹”。通过比较这些指纹的相似度，我们就能迅速筛选出语义上“最接近”的 Top-N（比如前20条）。这一步高效快速，能把大部分不相关的噪音排除在外。</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRYaM3d11OZ8QUemAmvra16zIWCh6ViaicTATdwLic7I0r5ycLXjVtiaI3EQ/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=6" alt="图片"></figure><hr><p>第二步：潜力信息中“挑”出金子（Qwen3-Reranker 精排）</p><p>现在我们只剩下几十条“潜力信息”了。这时候，Qwen3-Reranker 模型开始工作！它会更深入地理解你的问题和每条“潜力信息”的内容，然后判断它们到底有多“匹配”。它会给出一个“相关度分数”（其实是“yes”的概率），分数越高，说明这条信息越符合你的需求。</p><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRTIfcnvDO4piaUIaSjOVQhnTV62jM09prIHHNFicQAK9wSUyUdVmK35cA/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=7" alt="图片"></figure><p>最终，我们根据这些分数，对文档进行重新排序，并从中选出最顶部的 Top-K（比如前5-8条）。这些就是真正经过“语义洗礼”和“专家评审”的高质量、高相关性信息，可以直接喂给你的本地大模型！</p><hr><p>核心伪代码解析：让搜索更可控</p><p>这里为了控制文章篇幅，就只把这整个智能搜索和嵌入重排的流程用伪代码演示，封装成一个强大的 Python 函数 search_and_rerank_with_searxng。它能让你轻松控制搜索的“广度”和“深度”：</p><pre class="code-snippet__js"><code># 1. 模型和工具的预加载 (只需在程序启动时执行一次)
+# 为了避免重复加载，提高效率，这些模型和客户端只会在应用启动时加载一次。
+# 它们可以被加载到你的GPU上，以实现快速推理。
+# 定义全局变量来存储已加载的模型和分词器
+# embedding_model, embedding_tokenizer
+# reranker_model, reranker_tokenizer
+# searxng_client (JamePeng开发的SearXNG客户端)
+def load_qwen_models_and_init_clients():
+    """
+    负责加载所有Qwen3模型和初始化SearXNG客户端。
+    此函数应在程序启动时调用一次。
+    """
+    # 加载 Qwen3-Embedding 模型和分词器
+    # embedding_tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen3-Embedding-0.6B', padding_side='left')
+    # embedding_model = AutoModel.from_pretrained('Qwen/Qwen3-Embedding-0.6B').cuda() # 或CPU
+    # 加载 Qwen3-Reranker 模型和分词器
+    # reranker_tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen3-Reranker-0.6B', padding_side='left')
+    # reranker_model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen3-Reranker-0.6B').cuda().eval() # 或CPU
+    # 初始化 SearXNG 客户端 (来自JamePeng的searxng_search库)
+    # searxng_client = SearXNGSearch(base_url="http://localhost:8888", ...)
+    # 此外，还需要初始化Qwen3-Reranker所需的特殊tokens和prompt前缀/后缀。
+    pass # 实际代码中会有详细的模型加载和客户端初始化逻辑
+# 2. 核心搜索与重排函数：search_and_rerank_with_searxng
+def search_and_rerank_with_searxng(
+    user_query: str,             # 用户的搜索问题，例如：“最新的AI模型有哪些？”
+    language: str = "zh-CN",     # 搜索结果的语言，例如：“zh-CN”或“en-US”
+    max_searx_results: int = 20, # 【控制搜索广度】从SearXNG获取的原始结果数量，越多越全，但也可能越慢。
+    top_k_rerank: int = 5        # 【控制精排深度】最终筛选出多少条最相关的结果给大模型。
+) -&gt; list[dict]:
+    """
+    执行带有Qwen3语义重排的SearXNG搜索。
+    """
+    # 打印日志，显示当前搜索的查询和参数，方便追踪。
+    logger.info(f"正在处理查询: '{user_query}', 语言: {language}")
+    logger.info(f"请求SearXNG获取最多 {max_searx_results} 条结果，最终精排选出Top {top_k_rerank} 条。")
+    # A. 第一步：调用 JamePeng 的 searxng_search 获取原始结果
+    # 这里我们使用之前初始化好的 searxng_client 来发起搜索请求。
+    # raw_searx_results = searxng_client.text(
+    #     query=user_query,
+    #     language=language,
+    #     max_results=max_searx_results # 使用传入的参数控制数量
+    # )
+    # 捕获并处理SearXNG可能发生的网络或解析错误。
+    # 接着，我们会对原始结果进行初步处理，提取出标题、摘要、链接等有用信息。
+    # B. 第二步：Qwen3-Embedding 进行“粗排” (基于语义相似度)
+    # 1. 将用户查询转换成Qwen3-Embedding需要的特定格式。
+    #    例如：'Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: {user_query}'
+    # 2. 使用 embedding_model 获取用户查询的语义向量。
+    # 3. 使用 embedding_model 获取所有原始搜索结果（标题+摘要）的语义向量。
+    # 4. 计算查询向量和所有文档向量之间的余弦相似度。
+    # 5. 根据相似度分数，选出Top N条结果（例如：最多20条，即使max_searx_results更大）。
+    #    这些被选中的文档会连同它们的语义相似度分数一起，进入下一阶段。
+    # C. 第三步：Qwen3-Reranker 进行“精排” (基于深层相关性判断)
+    # 1. 针对粗排后的每一对“用户查询 - 候选文档”，将其格式化成Qwen3-Reranker需要的特定Prompt。
+    #    例如：'&lt;|im_start|&gt;system\nJudge whether the Document meets the requirements...\n&lt;|im_start|&gt;user\n&lt;Instruct&gt;: ...\n&lt;Query&gt;: ...\n&lt;Document&gt;: ...&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\n&lt;think&gt;\n\n&lt;/think&gt;\n\n'
+    # 2. 将格式化后的Prompt批量送入 reranker_model 进行推理。
+    # 3. reranker_model 会预测每个文档对“是否相关”的概率（即“yes”的概率）。
+    # 4. 根据这些“相关度分数”，对粗排后的文档进行最终的重新排序。
+    # D. 第四步：最终筛选并返回
+    # 从精排后的所有结果中，只选取分数最高的 top_k_rerank 条结果。
+    # 例如：最终只返回前5条。
+    # 每条结果包含：标题 (title)、摘要 (abstract)、链接 (link) 和重排分数 (rerank_score)。
+    # return final_selected_results # 返回一个字典列表
+# 3. 在你的本地大模型应用中这样调用
+if __name__ == "__main__":
+    # 在程序启动时，确保所有模型和客户端都已准备就绪
+    load_qwen_models_and_init_clients()
+    # 举例：搜索“最新的AI模型有哪些？”，从SearXNG搜30条，精排选前3条
+    print("\n======== 正在测试查询: '最新的AI模型有哪些？' ========")
+    results_for_llm = search_and_rerank_with_searxng(
+        user_query="最新的AI模型有哪些？",
+        language="zh-CN",
+        max_searx_results=30, # 我要从SearXNG获取最多30条原始结果
+        top_k_rerank=3        # 但最终只给大模型最相关的3条
+    )
+    # 打印最终结果，作为LLM的上下文
+    # print(results_for_llm)
+    # 另一个例子：搜索“Python asynchronous programming best practices”，从SearXNG搜50条，精排选前5条
+    print("\n======== 正在测试查询: 'Python asynchronous programming best practices' ========")
+    results_for_llm = search_and_rerank_with_searxng(
+        user_query="Python asynchronous programming best practices",
+        language="en-US",
+        max_searx_results=50, # 获取更多原始结果以提高召回率
+        top_k_rerank=5        # 精选5条优质结果
+    )
+    # print(results_for_llm_en)
+    # 接着，你可以将 results_for_llm 注入到你的大模型Prompt中...
+    # 例如：
+    # payloads = f"用户问题: {user_query}\n\n请参考以下搜索结果来回答问题:\n{results_for_llm}\n\n回答:"
+    # response = your_local_llm_model.generate(payloads)
+    # print("\n本地模型回答:", local_llm_response)</code></pre><p>注：使用早于4.51.0版本的Transformers时，您可能会遇到以下错误：</p><pre class="code-snippet__js"><code>KeyError: 'qwen3</code></pre><hr><h2 id="section-1">展望未来：优化资源与追求极致性能</h2><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsROGubTzO0pJqEQtHxibEdoSnMuYftBWstR1icH8Ko982zorKklnwDcmnQ/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=8" alt="图片"></figure><p>虽然这套方案已经能显著提升本地大模型的对于信息相关度的搜索能力，但在实际部署中，你可能会面临一些新的挑战，特别是关于<strong>资源消耗和延迟</strong>的问题。</p><h3 id="section-3"><strong>1. 资源与延迟的挑战</strong></h3><p><strong>Qwen3-Embedding</strong>&#160;和&#160;<strong>Qwen3-Reranker</strong>&#160;都是需要一定计算资源的模型，尤其是在处理大量搜索结果时。</p><p>如果你把它们和主力的本地大语言模型部署在同一台机器上。可能会：</p><ul><li><strong>争抢 GPU 显存：导致单个模型性能下降，甚至出现显存不足。</strong><strong><br></strong></li><li><strong>增加推理延迟：每次搜索请求都需要模型进行推理，这会增加用户等待响应的时间。</strong><strong><br></strong></li></ul><hr><h4 id="section-4"><strong>2. 将专用模型服务化：FastAPI 的潜力</strong></h4><p>为了解决这些挑战，一个非常推荐的方案是：</p><p>将&#160;<strong>Qwen3-Embedding 和 Qwen3-Reranker 独立部署成微服务</strong>。</p><p>例如，使用&#160;<strong>FastAPI</strong>&#160;这样的高性能 Python web 框架：</p><ul><li><strong>解耦资源：可以将 Embedding 和 Reranker 模型部署在独立的 GPU 服务器上，与你的主大语言模型分离开来，避免资源冲突。</strong><strong><br></strong><strong><br></strong></li><li><strong>提升并发与扩展性：FastAPI 服务可以处理高并发请求，当搜索量增大时，可以独立扩展这些服务。</strong><strong><br></strong><strong><br></strong></li><li><strong>简化调用：主大语言模型只需要通过简单的 HTTP 请求调用这些服务，而不是直接加载和管理模型，代码结构更清晰。<br></strong></li></ul><p>这样，当你需要进行搜索重排时，你的本地大语言模型只是向一个独立的 API 服务发送请求，获得精准的搜索结果，然后专注于生成高质量的回答。</p><hr><h4 id="section-5"><strong>3. 模型上下文协议 (MCP) 的潜力</strong></h4><p>未来像&#160;<strong>模型上下文协议 (Model Context Protocol, MCP)</strong>&#160;这样的标准可能会变得越来越重要。MCP 的目标是定义一套通用的接口和规范，让各种外部工具（包括我们今天讨论的搜索和重排模型）能够以标准化的方式与大语言模型进行交互，提供外部上下文。</p><hr><figure><img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/rh4kUHINjicqEawLOHel5ziblqhkwaLPsRgk9WtkPqaHfQn8SKYJBQhKJsAGzMUvibTZNN14icsmWQbXwQTgYGymiaQ/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=9" alt="图片"></figure><p>想象一下，未来你的大语言模型可以直接通过 MCP 接口</p><p>“告诉”外部的嵌入重排mcp服务：</p><p>“请帮我针对这个问题，从这些信息或文档中找到最相关的5 条信息！”</p><p>而无需关心底层的模型是 Qwen3 还是其他，</p><p>也无需担心复杂的Prompt工程。 这将极大简化 RAG (检索增强生成) 系统的构建和维护！</p><p>通过持续优化和拥抱新技术，</p><p>我们就能让本地大模型在复杂的知识世界中游刃有余，</p><p>真正成为你工作和学习中的得力助手。</p></div>

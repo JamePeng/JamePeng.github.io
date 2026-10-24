@@ -1,0 +1,990 @@
+{
+  "checkedAt": "2026-10-24",
+  "account": "JamePeng",
+  "auditedRepos": 43,
+  "repos": [
+    {
+      "name": "JamePeng/llama-cpp-python",
+      "url": "https://github.com/JamePeng/llama-cpp-python",
+      "fork": true,
+      "branch": "main",
+      "count": 1008,
+      "latest": {
+        "sha": "7cde2d46801eecc6bc86a5b10d4c766acaf5a88a",
+        "title": "docs: document LiliCorr support and efficient test design",
+        "date": "2026-10-24T00:50:08Z",
+        "url": "https://github.com/JamePeng/llama-cpp-python/commit/7cde2d46801eecc6bc86a5b10d4c766acaf5a88a"
+      }
+    },
+    {
+      "name": "JamePeng/llama.cpp",
+      "url": "https://github.com/JamePeng/llama.cpp",
+      "fork": true,
+      "branch": "master",
+      "count": 2,
+      "latest": {
+        "sha": "cc231cb0da565440cf6a3e5b55dfeba477972cb6",
+        "title": "dflash: pass missing NVFP4 scales to attention operations (#28000)",
+        "date": "2026-08-30T08:34:39Z",
+        "url": "https://github.com/JamePeng/llama.cpp/commit/cc231cb0da565440cf6a3e5b55dfeba477972cb6"
+      }
+    },
+    {
+      "name": "JamePeng/MiniCPM-V",
+      "url": "https://github.com/JamePeng/MiniCPM-V",
+      "fork": true,
+      "branch": "main",
+      "count": 8,
+      "latest": {
+        "sha": "b109c67478d73baf337c13a5cbeede18a584f5b6",
+        "title": "fixed missing import",
+        "date": "2024-08-27T12:52:52Z",
+        "url": "https://github.com/JamePeng/MiniCPM-V/commit/b109c67478d73baf337c13a5cbeede18a584f5b6"
+      }
+    },
+    {
+      "name": "JamePeng/searxng_search",
+      "url": "https://github.com/JamePeng/searxng_search",
+      "fork": false,
+      "branch": "master",
+      "count": 16,
+      "latest": {
+        "sha": "fb4b3995347f7cc1ed666cdb99ae41dc8935ab76",
+        "title": "docs: update SearXNG Docker setup in README",
+        "date": "2026-05-24T11:05:40Z",
+        "url": "https://github.com/JamePeng/searxng_search/commit/fb4b3995347f7cc1ed666cdb99ae41dc8935ab76"
+      }
+    },
+    {
+      "name": "JamePeng/FinGLM",
+      "url": "https://github.com/JamePeng/FinGLM",
+      "fork": true,
+      "branch": "main",
+      "count": 3,
+      "latest": {
+        "sha": "53f33e9e43b5b8c67512ea16761d6e49fda39531",
+        "title": "Update preprocess.py: add missing extract_dev_info function call",
+        "date": "2023-10-22T14:03:30Z",
+        "url": "https://github.com/JamePeng/FinGLM/commit/53f33e9e43b5b8c67512ea16761d6e49fda39531"
+      }
+    },
+    {
+      "name": "JamePeng/ChatGLM3",
+      "url": "https://github.com/JamePeng/ChatGLM3",
+      "fork": true,
+      "branch": "main",
+      "count": 1,
+      "latest": {
+        "sha": "e9837877d09eb9f28856ad21ebfb023ed049a740",
+        "title": "Improve web_demo2.py code and operation(agent prompt support)",
+        "date": "2023-10-27T10:18:19Z",
+        "url": "https://github.com/JamePeng/ChatGLM3/commit/e9837877d09eb9f28856ad21ebfb023ed049a740"
+      }
+    },
+    {
+      "name": "JamePeng/hactool",
+      "url": "https://github.com/JamePeng/hactool",
+      "fork": true,
+      "branch": "master",
+      "count": 1,
+      "latest": {
+        "sha": "cc947e1b4f55bf74b334f618a6eb69c1b1c6c012",
+        "title": "update function get_key_revision_summary for 6.0.0",
+        "date": "2018-10-18T14:35:16Z",
+        "url": "https://github.com/JamePeng/hactool/commit/cc947e1b4f55bf74b334f618a6eb69c1b1c6c012"
+      }
+    },
+    {
+      "name": "JamePeng/citra",
+      "url": "https://github.com/JamePeng/citra",
+      "fork": true,
+      "branch": "master",
+      "count": 14,
+      "latest": {
+        "sha": "ac2ed18a3b7c3968628f62dc447b3c39f7c51a32",
+        "title": "Minor amendment of GSP_GPU::ImportDisplayCaptureInfo code",
+        "date": "2016-12-13T09:01:53Z",
+        "url": "https://github.com/JamePeng/citra/commit/ac2ed18a3b7c3968628f62dc447b3c39f7c51a32"
+      }
+    },
+    {
+      "name": "JamePeng/JKSV",
+      "url": "https://github.com/JamePeng/JKSV",
+      "fork": true,
+      "branch": "master",
+      "count": 4,
+      "latest": {
+        "sha": "8ddda9363f78c2fe6a36ffe52a928c5e153c66dc",
+        "title": "Add new external strings for zhCN",
+        "date": "2020-06-04T18:56:43Z",
+        "url": "https://github.com/JamePeng/JKSV/commit/8ddda9363f78c2fe6a36ffe52a928c5e153c66dc"
+      }
+    },
+    {
+      "name": "JamePeng/easy_mira_js",
+      "url": "https://github.com/JamePeng/easy_mira_js",
+      "fork": false,
+      "branch": "main",
+      "count": 4,
+      "latest": {
+        "sha": "719d5bf8b60d8912a97592f7e0a36ac05972aa4e",
+        "title": "Add easy_goldhen_js.py to process Goldhen payload",
+        "date": "2021-04-09T15:13:13Z",
+        "url": "https://github.com/JamePeng/easy_mira_js/commit/719d5bf8b60d8912a97592f7e0a36ac05972aa4e"
+      }
+    },
+    {
+      "name": "JamePeng/NX_Sysmodules",
+      "url": "https://github.com/JamePeng/NX_Sysmodules",
+      "fork": true,
+      "branch": "master",
+      "count": 2,
+      "latest": {
+        "sha": "b04b99843f4d64f02c8788cd69eb858a80f5fbd8",
+        "title": "Fix tons of comflict compilation by the new libnx  (#28)",
+        "date": "2019-06-05T23:21:28Z",
+        "url": "https://github.com/JamePeng/NX_Sysmodules/commit/b04b99843f4d64f02c8788cd69eb858a80f5fbd8"
+      }
+    },
+    {
+      "name": "JamePeng/JamePeng.github.io",
+      "url": "https://github.com/JamePeng/JamePeng.github.io",
+      "fork": false,
+      "branch": "master",
+      "count": 15,
+      "latest": {
+        "sha": "08217faf9a0082e755e4151a1aa636a72f3265fe",
+        "title": "Site updated: 2019-06-03 22:56:27",
+        "date": "2019-06-03T14:56:28Z",
+        "url": "https://github.com/JamePeng/JamePeng.github.io/commit/08217faf9a0082e755e4151a1aa636a72f3265fe"
+      }
+    },
+    {
+      "name": "JamePeng/Proxy_Pool",
+      "url": "https://github.com/JamePeng/Proxy_Pool",
+      "fork": false,
+      "branch": "master",
+      "count": 2,
+      "latest": {
+        "sha": "8b5aea2cd15c184518b7a8bd3262e0909f64beaa",
+        "title": "update README.MD",
+        "date": "2019-03-05T18:08:22Z",
+        "url": "https://github.com/JamePeng/Proxy_Pool/commit/8b5aea2cd15c184518b7a8bd3262e0909f64beaa"
+      }
+    },
+    {
+      "name": "JamePeng/commodity_homework",
+      "url": "https://github.com/JamePeng/commodity_homework",
+      "fork": false,
+      "branch": "master",
+      "count": 4,
+      "latest": {
+        "sha": "abcdcca14248451876548955eb842815a736652c",
+        "title": "Append my database",
+        "date": "2016-10-02T15:59:45Z",
+        "url": "https://github.com/JamePeng/commodity_homework/commit/abcdcca14248451876548955eb842815a736652c"
+      }
+    }
+  ],
+  "areas": [
+    {
+      "number": "01",
+      "title": "Python 绑定与接口同步",
+      "description": "跟进 llama.cpp、MTMD 与 ggml 的接口变化，补齐枚举、批处理接口与参数类型。",
+      "evidence": {
+        "sha": "feed55121caf9f4e230ccfdd2b034142856ae352",
+        "url": "https://github.com/JamePeng/llama-cpp-python/commit/feed55121caf9f4e230ccfdd2b034142856ae352",
+        "date": "2026-10-05",
+        "title": "feat: extend llama.cpp bindings and synchronize enums"
+      }
+    },
+    {
+      "number": "02",
+      "title": "运行时与缓存可靠性",
+      "description": "维护前缀匹配、状态检查点和上下文资源的生命周期与错误恢复。",
+      "evidence": {
+        "sha": "cfec4a59e052fdf94599d95045f7edf400d1b593",
+        "url": "https://github.com/JamePeng/llama-cpp-python/commit/cfec4a59e052fdf94599d95045f7edf400d1b593",
+        "date": "2026-10-18",
+        "title": "fix(cache): unify prefix matching and reduce trie maintenance overhead"
+      }
+    },
+    {
+      "number": "03",
+      "title": "推测解码与多模态",
+      "description": "维护 MTP 等推测解码路径，扩展图像对话、多模态向量与 LiliCorr 支持。",
+      "evidence": {
+        "sha": "888e5740fe2e810a32d16330afac3c8671ff2131",
+        "url": "https://github.com/JamePeng/llama-cpp-python/commit/888e5740fe2e810a32d16330afac3c8671ff2131",
+        "date": "2026-10-14",
+        "title": "feat(mtmd/mtp): enable MTMD image chat with MTP speculative decoding"
+      }
+    },
+    {
+      "number": "04",
+      "title": "构建、测试与文档",
+      "description": "维护 CUDA wheel、复用原生构建产物，完善 CI 测试、Wiki 与使用示例。",
+      "evidence": {
+        "sha": "9065ba4ff2db834700b52b491cf02be8d70f5fc5",
+        "url": "https://github.com/JamePeng/llama-cpp-python/commit/9065ba4ff2db834700b52b491cf02be8d70f5fc5",
+        "date": "2026-09-17",
+        "title": "test: consolidate coverage and share pinned models across CI jobs"
+      }
+    }
+  ],
+  "pullRequests": [
+    {
+      "repo": "ggml-org/llama.cpp",
+      "number": 28000,
+      "description": "修复 DFlash 注意力运算遗漏的 NVFP4 scales。",
+      "url": "https://github.com/ggml-org/llama.cpp/pull/28000",
+      "title": "dflash: pass missing NVFP4 scales to attention operations",
+      "status": "merged",
+      "date": "2026-08-30"
+    },
+    {
+      "repo": "ggml-org/llama.cpp",
+      "number": 26646,
+      "description": "修复 Metal lightning indexer 的 threadgroup half4x4 编译问题。",
+      "url": "https://github.com/ggml-org/llama.cpp/pull/26646",
+      "title": "metal: fix `threadgroup half4x4` compilation error in lightning indexer",
+      "status": "merged",
+      "date": "2026-08-07"
+    },
+    {
+      "repo": "OpenBMB/MiniCPM-V",
+      "number": 484,
+      "description": "更新 MiniCPM-V 2.6 的 Streamlit 演示实现。",
+      "url": "https://github.com/OpenBMB/MiniCPM-V/pull/484",
+      "title": "Update streamlit implementation for MiniCPM-V 2.6",
+      "status": "merged",
+      "date": "2024-09-13"
+    },
+    {
+      "repo": "OpenBMB/MiniCPM-V",
+      "number": 61,
+      "description": "为 MiniCPM-V 实现基于 Streamlit 的聊天界面。",
+      "url": "https://github.com/OpenBMB/MiniCPM-V/pull/61",
+      "title": "Implement chatbot functionality using Streamlit",
+      "status": "merged",
+      "date": "2024-05-28"
+    },
+    {
+      "repo": "zai-org/ChatGLM3",
+      "number": 13,
+      "description": "改进网页演示与 Agent prompt 支持。",
+      "url": "https://github.com/zai-org/ChatGLM3/pull/13",
+      "title": "Improve web_demo2.py code and operation(agent prompt support)",
+      "status": "merged",
+      "date": "2023-10-27"
+    },
+    {
+      "repo": "MetaGLM/FinGLM",
+      "number": 11,
+      "description": "补充 ChatGLM2-6B 系统化微调教程。",
+      "url": "https://github.com/MetaGLM/FinGLM/pull/11",
+      "title": "新增Chatglm2-6B模型系统化微调教程",
+      "status": "merged",
+      "date": "2023-10-20"
+    },
+    {
+      "repo": "ggml-org/llama.cpp",
+      "number": 28472,
+      "description": "提出公开词表 clean-spaces 配置的 API。",
+      "url": "https://github.com/ggml-org/llama.cpp/pull/28472",
+      "title": "api(llama): expose vocab clean-spaces setting",
+      "status": "open",
+      "date": "2026-09-06"
+    },
+    {
+      "repo": "abetlen/llama-cpp-python",
+      "number": 1966,
+      "description": "提交 LLAMA_API 同步与 Windows CUDA 工作流更新方案。",
+      "url": "https://github.com/abetlen/llama-cpp-python/pull/1966",
+      "title": "Synchronize LLAMA_API with ggml-org/llama.cpp and update cuda workflow for windows",
+      "status": "closed",
+      "date": "2025-03-13"
+    },
+    {
+      "repo": "abetlen/llama-cpp-python",
+      "number": 1901,
+      "description": "提交 Python 绑定与 llama.cpp 主线 API 名称同步方案。",
+      "url": "https://github.com/abetlen/llama-cpp-python/pull/1901",
+      "title": "Update llama_cpp: Sync LLAMA_API names with llama.cpp mainline. Needs more testing",
+      "status": "closed",
+      "date": "2025-01-29"
+    }
+  ],
+  "releaseHistory": {
+    "source": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md",
+    "checkedAt": "2026-10-24",
+    "start": {
+      "date": "2025-03-13",
+      "version": "0.3.8",
+      "url": "https://github.com/JamePeng/llama-cpp-python/commit/37ae87336856ccca6184422e9889b48f3abc73b9"
+    },
+    "releases": [
+      {
+        "version": "0.4.3",
+        "title": "多模态向量与 MTP 图像推理",
+        "changes": [
+          "新增文本、图像和音频的 MTMD embedding，补充 Qwen3-VL 使用指南与归一化修复。",
+          "支持 MTMD 图像对话结合 MTP，扩展 LlamaBatchExt 与独立 hidden state 输入。",
+          "复用原生库打包多版本 Python wheel，完善 CUDA 版本传递、测试和文档。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L10",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/8fe0a5f5514cdbd3fff1c60b3ff21fb0eb7b5059...6c22029fe41885e1875823b96d5b2076e152c7ba"
+      },
+      {
+        "version": "0.4.2",
+        "title": "RPC 设备选择与扩展批处理",
+        "changes": [
+          "支持为模型选择远程 RPC 与本地设备，并向服务端开放配置。",
+          "扩展 batch、ggml 缓冲区接口，修正状态返回类型及量化、训练参数 ABI。",
+          "为 CUDA、Metal wheel 启用 RPC，补充跨平台后端加载测试与部署指南。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L126",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/6332d8d4fcd3d4ae0c92974161348d3e8eb1e2c0...6126add06f9c57678a6ce5951c4676d36dc52758"
+      },
+      {
+        "version": "0.4.1",
+        "title": "通用多模态模板与后端绑定",
+        "changes": [
+          "扩展视觉、视频输入及媒体标记的模板兼容，统一加载模型自带的聊天模板。",
+          "补齐 Jinja 模板辅助函数，修正解码位置结构体 ABI，扩展 ggml 后端绑定。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L215",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/5c83af7dcfed4ffdd6bda791835d92698c90a398...3e99f13c8c3cc236bafbedf3448ec2ef0d7df797"
+      },
+      {
+        "version": "0.4.0-Milestone",
+        "title": "语音生成与运行时可靠性",
+        "changes": [
+          "加入基于 MTMD 的 Qwen3-TTS、Pocket TTS 音频生成。",
+          "扩展语法根规则、延迟触发与 JSON Schema 转换，改进语法构造。",
+          "整理状态快照、混合模型检查点、原生取消与资源回收，统一测试和 Wiki。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L277",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/34c1bfbce3ad485d31e67039fa9200e6ab49882e...15f95d1d268b8d48e88676af6ef7bfceb5f8e3ab"
+      },
+      {
+        "version": "0.3.49",
+        "title": "DFlash 系列与视频输入",
+        "changes": [
+          "加入 DFlash、DFlash2、DSpark 文本推测解码及对比示例。",
+          "开放 MTMD 视频选项，修复缓存计量、回滚和中断恢复。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L415",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/75622979b0e3fa8590586971bc594c00eec33b76...1966df596f0033592a2ae168fd444abbf293dba8"
+      },
+      {
+        "version": "0.3.48",
+        "title": "有状态 MTP 推测解码",
+        "changes": [
+          "引入文本场景的有状态 MTP，支持内置与外部 MTP 模型。",
+          "完善检查点、验证批次、回滚与基准测试参数。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L642",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/4854c7d305650b6bc9cf2dc805931a5bf2e40dd0...85913abc4f4b9191b28bc6bc482ae9369e0ba624"
+      },
+      {
+        "version": "0.3.47",
+        "title": "多输出采样与音频接口",
+        "changes": [
+          "补齐 Pocket TTS 和音频 helper 绑定，加入多输出后端采样接口。",
+          "重置时完整清理模型状态，修正自定义采样器的后端 hook 行为。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L775",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/81190b03f6d177988112dad5fc919491a77705d1...9acda8b4b35482d9b2dac9e191bbb9880ddf094e"
+      },
+      {
+        "version": "0.3.46",
+        "title": "模型扩展接口与兼容修复",
+        "changes": [
+          "开放目标层、token embedding 与 NextN embedding 接口，更新音频生成和 chunk 序列化绑定。",
+          "处理 Windows 下 OpenMP 与 ggml 库冲突。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L805",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/d9d27a7bdf1c27d50c1490ad6acd825f31804902...3397ecb3d64a4f7ba21f0877baa34f6f6a852386"
+      },
+      {
+        "version": "0.3.45",
+        "title": "Embedding 重整与跨平台 ABI",
+        "changes": [
+          "重整内置 embedding，完善流式批处理、序列容量检查与使用示例。",
+          "扩展模型加载配置，增加跨平台 ABI 检查工具并修复可选符号解析。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L843",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/ebf6099b81cf67cfb5eec569466367c9fa04e9d4...aafc6fb74ebfba6a044510f80b5e9ad277109c12"
+      },
+      {
+        "version": "0.3.44",
+        "title": "Windows OpenMP 加载修复",
+        "changes": [
+          "在加载 ggml-base 前预加载随包分发的 OpenMP 运行时，改善 Windows DLL 加载可靠性。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L995"
+      },
+      {
+        "version": "0.3.43",
+        "title": "可选扩展接口与 MTMD 模板缓存",
+        "changes": [
+          "增加可选 llama-ext API、兼容符号别名与绑定参数校验。",
+          "缓存通用 MTMD 模板解析，跟进 Gemma 4 模板并保留子类聊天格式。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1007",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/e522cecb93907c67ffe2e339b7009c93d3fb0f59...a64128351a1d04c6dd644e3908070f7ea2002f20"
+      },
+      {
+        "version": "0.3.42",
+        "title": "后端加载与批处理安全",
+        "changes": [
+          "修正 Windows DLL 搜索和 ggml 加载顺序，完善错误诊断。",
+          "支持 token 与 embedding 混合 batch，在 MTMD 分词及原生解码前校验输入。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1081",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/169d5e1a43fb6ff4e5b6f5d0f26f1ec8acbd97b8...3da4c603612c3344031b32ffbeb1da1c84bb205a"
+      },
+      {
+        "version": "0.3.41",
+        "title": "通用 MTMD 与媒体输入扩展",
+        "changes": [
+          "拆分多模态模块，接入通用聊天模板处理器，扩展图像、音频和视频输入。",
+          "改善 n-gram draft 选择与反馈，补充 Windows LLVM OpenMP 发现逻辑。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1176",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/12861b918f67b62f78f28c5cabb7223f766e1097...b9b58594023ab673c2dda6723f8909d85d65a2e5"
+      },
+      {
+        "version": "0.3.40-Milestone",
+        "title": "推理预算与原生采样",
+        "changes": [
+          "加入 reasoning budget 控制，完善 Gemma 4 与 Jinja 模板兼容。",
+          "扩展 NGramMap k/k4v 模式，减少原生采样中的冗余 logits 拷贝。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1309",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/a778c57d73ec7d4f43e2518a513e7d4cf68a0df8...db8292d336ae1e708623792426481c414754353e"
+      },
+      {
+        "version": "0.3.39",
+        "title": "动态后端与设备端检查点",
+        "changes": [
+          "引入动态 GGML 后端加载与 wheel 分发，支持设备端混合模型检查点。",
+          "加入 Qwen3-ASR、MiniCPM-V 4.6 处理器与细粒度日志。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1611",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/ef27f333f367fdc53dc1a729ad8bb6c3c9362514...e87041e4ee6a89798abe9f36315f60f3fb06c5cb"
+      },
+      {
+        "version": "0.3.38",
+        "title": "中文解码与语法同步",
+        "changes": [
+          "改善 CJK 输出的 detokenize 缓冲区分配，同步 JSON Schema 到 GBNF 转换器。",
+          "过滤冗余 CUDA Graph 调试日志，补充语法 Wiki。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1727",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/fe38cbfac424973ccd9cfaa199a64a02502af4d1...fe8657adf71856967320bfb932461d65ecf77b19"
+      },
+      {
+        "version": "0.3.37",
+        "title": "MoE 卸载与 N-gram 推测解码",
+        "changes": [
+          "加入细粒度 MoE CPU 卸载、基于哈希的 N-gram 推测解码与线程安全中止。",
+          "扩展 ggml 后端绑定，建立并补充 LLM Wiki 文档。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1751",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/b97cb637cd6124fc47f569721b1716014bd856a8...374c0d00aab924f03c18a2a53ab65c2fa20ce66c"
+      },
+      {
+        "version": "0.3.36",
+        "title": "全模态交互与模型扩展",
+        "changes": [
+          "完善 Gemma 4 全模态和工具调用，跟进 Qwen3.6，加入 Step3-VL 支持。",
+          "更新 OpenAI API 类型与 CUDA、Metal 构建工作流。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1827",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/e1ade17c6330e3cc46a2b08f9b48b1540521b231...7820677e65827b6f3356f651da9be8d510ba10e5"
+      },
+      {
+        "version": "0.3.35",
+        "title": "Gemma 4 与日志架构迁移",
+        "changes": [
+          "加入 Gemma 4、LFM2.5-VL 处理器，完善多模态和工具调用。",
+          "迁移到 ggml 日志回调，扩展 ggml-base 绑定并对齐 OpenAI 接口类型。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1882",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/a184583e908cc138fd15794986b3581521fb9b0c...232092e32b3563159a86aacb168da06c4937192b"
+      },
+      {
+        "version": "0.3.34",
+        "title": "动态 LoRA 与回复续写",
+        "changes": [
+          "支持动态 LoRA 路由、Control Vector 和 assistant prefill。",
+          "修正适配器参数签名，移除旧的静态 LoRA 初始化逻辑。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1930",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/6bbc8d2306319c67c9f7d0d2d0576496f3587a3c...a8cec004466493db57d3cbc043cdc897b2b37f9b"
+      },
+      {
+        "version": "0.3.33",
+        "title": "多模态卡顿与缓存修复",
+        "changes": [
+          "修复图像处理卡住、logits 漂移及工具调用问题，支持音频与交错媒体顺序。",
+          "改善磁盘缓存 I/O、LRU 与 RAM 淘汰逻辑，将 Trie 设为默认缓存。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L1986",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/e7e1d48065ba53846f290cfe563c8c839a062ebe...b0f00a96d3803863dd7d479f0cb1305f76f741b3"
+      },
+      {
+        "version": "0.3.32",
+        "title": "混合模型单轮推理优化",
+        "changes": [
+          "减少关闭缓存时的切片和检查点开销，修复 KV 清理。",
+          "让采样 seed 正确传入采样上下文。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2059"
+      },
+      {
+        "version": "0.3.31",
+        "title": "全模态管线与单 token 回滚",
+        "changes": [
+          "重构媒体处理管线，引入实验性音频输入。",
+          "以 N−1 检查点支持混合模型单 token 回滚，开放底层错误日志。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2092"
+      },
+      {
+        "version": "0.3.30-Milestone",
+        "title": "统一 MTMD 处理架构",
+        "changes": [
+          "重构多模态管线，支持并发 I/O 与混合状态管理。",
+          "抽取 MTMDChatHandler 基类，整合 Qwen3.5 处理器并修复视觉检测条件。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2117",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/e4861df5fd44bb83ec2b9063ca3375759416aead...3f8f0f89a2b72ec2f9494fa5f14206591a5cde49"
+      },
+      {
+        "version": "0.3.29",
+        "title": "混合模型生成与上下文管理",
+        "changes": [
+          "将混合模型检查点接入 generate、eval，支持上下文移动与自适应检查点间隔。",
+          "KV 耗尽时按需缩小 batch，强化架构检查和错误恢复。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2151"
+      },
+      {
+        "version": "0.3.28",
+        "title": "混合模型检查点缓存",
+        "changes": [
+          "引入 HybridCheckpointCache，为循环、混合和 SWA 模型管理状态回滚。",
+          "增加状态大小、序列与资源释放检查，整理多轮对话 KV 前缀复用。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2204"
+      },
+      {
+        "version": "0.3.27",
+        "title": "模型卸载与内存回收",
+        "changes": [
+          "修复多模态、采样器与模型重载中的原生资源泄漏，建立显式关闭路径。",
+          "加入 PaddleOCR-VL 1.5 处理器，补充性能计时和共享库搜索。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2244",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/3d0fd1b75ee564361a4babf21f88855225ba1fe0...1f8341ee74a2fea15a1008487cbecaccf918c755"
+      },
+      {
+        "version": "0.3.26",
+        "title": "采样内存与共享库布局",
+        "changes": [
+          "减少采样数据与 scores 缓冲区分配，优化状态保存和显式内存清理。",
+          "整理 CMake 安装布局，扩展 Linux、macOS 的共享库搜索路径。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2283",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/b03224b2dde3c8cbdd8bf529794e3a41ac7f5751...6b38182a17effd0cedbf8736bee2464dd6c7b4da"
+      },
+      {
+        "version": "0.3.25",
+        "title": "采样链整合与生命周期",
+        "changes": [
+          "让 Llama 接入新的采样链，拆分语法采样并修复采样历史对齐。",
+          "改善采样和语法对象的资源管理，更新集成测试与 Metal 构建。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2317",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/4ab182382b87bbbba4fb05ff184b557414740103...dc5f7e5564dd68af9d62f7d450cda45313f80b5d"
+      },
+      {
+        "version": "0.3.24",
+        "title": "原生采样链与生成式重排",
+        "changes": [
+          "重构采样基础设施和参数，接入 llama.cpp sampler chain。",
+          "支持带聊天模板的生成式 reranking，补充 Python 3.14 与 ROCm 指南。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2354",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/9b985b75105ea9f5e7f2f5e7988a1149f233af2f...acb7efa09293cffa5912242c372b715555e2a884"
+      },
+      {
+        "version": "0.3.23",
+        "title": "MiniCPM-V 4.5 与 Python 3.14",
+        "changes": [
+          "加入 MiniCPM-V 4.5 多图处理，完善聊天模板异常处理与默认提示。",
+          "支持 Python 3.14，定制 wheel 文件名以区分构建版本。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2385"
+      },
+      {
+        "version": "0.3.22",
+        "title": "前缀匹配与采样器扩展",
+        "changes": [
+          "使用 NumPy 向量比较与快速失败检查优化最长 token 前缀匹配。",
+          "增加 adaptive_p、infill 采样器和 Encoder-Decoder 初始化校验。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2411"
+      },
+      {
+        "version": "0.3.21",
+        "title": "分词、反分词与文档视觉模型",
+        "changes": [
+          "改用原生批量反分词并动态调整缓冲区，减少 Python 循环开销。",
+          "加入 Granite-Docling 多模态处理器。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2432"
+      },
+      {
+        "version": "0.3.20",
+        "title": "CUDA Docker 与接口维护",
+        "changes": [
+          "将 CUDA Docker 更新至 12.8.1 并改为源码安装。",
+          "同步上下文参数，修正 embedding 拼写与 Llava 1.5 处理器。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2454"
+      },
+      {
+        "version": "0.3.19",
+        "title": "Embedding 与 reranking 解耦",
+        "changes": [
+          "抽取 LlamaEmbedding，加入 reranking 和流式批处理。",
+          "修正并行批处理索引、eval 清理及缓存清空回退。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2461",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/2efaa346bc0aa0d6648938a0dcdf8d12240a8bed...aa653ea5c6a90505a7491e855cc16988293cedd5"
+      },
+      {
+        "version": "0.3.18",
+        "title": "视觉模型与 CUDA 13",
+        "changes": [
+          "加入 GLM-4.6V、GLM-4.1V、LFM2-VL 处理器。",
+          "扩展 CUDA 13 构建和 Windows 库路径，改善模型元数据读取与批量 token 处理。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2481",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/67421d546ddcaa07678ac7921a9f124e7e3de10e...d5131e2ff41e05f83fd847052b06938c7a551a6a"
+      },
+      {
+        "version": "0.3.17",
+        "title": "Trie 缓存与 Qwen3-VL",
+        "changes": [
+          "加入 LlamaTrieCache，用前缀树替代缓存的线性查找。",
+          "支持 Qwen3-VL、clip flash attention 与 Pillow 图像处理，扩展 CUDA wheel 构建矩阵。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2499",
+        "compare": "https://github.com/JamePeng/llama-cpp-python/compare/e5392b52036bd2770ece5269352f5600a8db5639...fbb0ed2f089c663a5eb75aadcad08f768041ed72"
+      },
+      {
+        "version": "0.3.16",
+        "title": "Qwen2.5-VL 多图修复",
+        "changes": [
+          "改善 Qwen2.5-VL 多图输入的处理，并同步底层 llama.cpp。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2514"
+      },
+      {
+        "version": "0.3.15",
+        "title": "聊天模板时间函数",
+        "changes": [
+          "为 Jinja2ChatFormatter 添加 strftime_now，适配 gpt-oss、Gemma 3 模板。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2519"
+      },
+      {
+        "version": "0.3.14",
+        "title": "底层版本同步",
+        "changes": [
+          "更新 llama.cpp，持续跟进底层推理接口。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2524"
+      },
+      {
+        "version": "0.3.13",
+        "title": "Qwen2.5-VL 聊天格式",
+        "changes": [
+          "同步 llama.cpp，并整合社区对 Qwen2.5-VL 聊天格式的修复。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2528"
+      },
+      {
+        "version": "0.3.12",
+        "title": "底层版本同步",
+        "changes": [
+          "更新 llama.cpp 至新的主线修订。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2533"
+      },
+      {
+        "version": "0.3.11",
+        "title": "Embedding KV 清理修复",
+        "changes": [
+          "同步上游对 Llama.embed 中 KV cache 清理接口引用的修复。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2537"
+      },
+      {
+        "version": "0.3.10",
+        "title": "上游多模态能力同步",
+        "changes": [
+          "同步 llama.cpp 多模态能力与 Qwen2.5-VL 聊天处理器。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2541"
+      },
+      {
+        "version": "0.3.9",
+        "title": "可选 MTMD 构建",
+        "changes": [
+          "同步底层版本，支持关闭 MTMD 构建或指定替代共享库路径。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2546"
+      },
+      {
+        "version": "0.3.8",
+        "title": "维护起点与底层同步",
+        "changes": [
+          "这一版本期间开始维护 Windows CUDA wheel 构建，并持续同步 llama.cpp。"
+        ],
+        "url": "https://github.com/JamePeng/llama-cpp-python/blob/main/CHANGELOG.md?plain=1#L2551"
+      }
+    ]
+  },
+  "systemsWork": {
+    "checkedAt": "2026-10-24",
+    "citra": {
+      "url": "https://github.com/JamePeng/citra",
+      "branchUrl": "https://github.com/JamePeng/citra/branches",
+      "defaultCommits": 14,
+      "allBranchCommits": 27,
+      "records": [
+        {
+          "sha": "2e5e7d9be0b8caa8ba7ecfde66bde2ca1aac97c8",
+          "date": "2016-05-24",
+          "title": "New3DS 机型识别",
+          "url": "https://github.com/JamePeng/citra/commit/2e5e7d9be0b8caa8ba7ecfde66bde2ca1aac97c8",
+          "number": 1520,
+          "description": "实现 CheckNew3DS / CheckNew3DSApp，贯通配置、APT 与 PTM 的机型判断。"
+        },
+        {
+          "sha": "61992170ac0843da7683b302aa5d46e5ac0f7f1d",
+          "date": "2016-04-26",
+          "title": "Y2R 图像转换服务",
+          "url": "https://github.com/JamePeng/citra/commit/61992170ac0843da7683b302aa5d46e5ac0f7f1d",
+          "number": 1447,
+          "description": "补充输入输出格式、旋转与对齐等服务接口，整理 IPC 响应与参数。"
+        },
+        {
+          "sha": "9045c57d6f88b8c828e325e8db75b19c4b4097bc",
+          "date": "2016-04-08",
+          "title": "AM 应用管理服务",
+          "url": "https://github.com/JamePeng/citra/commit/9045c57d6f88b8c828e325e8db75b19c4b4097bc",
+          "number": 1623,
+          "description": "补齐应用内容、标题与 ticket 相关的服务接口和占位处理。"
+        },
+        {
+          "sha": "f531d4b810259a0a2a60d8f311ab247de5d8f835",
+          "date": "2016-04-06",
+          "title": "APT 应用 CPU 时间配置",
+          "url": "https://github.com/JamePeng/citra/commit/f531d4b810259a0a2a60d8f311ab247de5d8f835",
+          "number": 1577,
+          "description": "补充 SetAppCpuTimeLimit / GetAppCpuTimeLimit，整理服务声明与绑定。"
+        },
+        {
+          "sha": "62b105b69523456c52b58a1992d465a0ea6682e5",
+          "date": "2016-03-14",
+          "title": "NDM 服务结构与接口",
+          "url": "https://github.com/JamePeng/citra/commit/62b105b69523456c52b58a1992d465a0ea6682e5",
+          "number": 1409,
+          "description": "重组 NDM 服务路径，补充 daemon 暂停、恢复及默认配置的占位实现。"
+        },
+        {
+          "sha": "da995a4377ba5194ca9759c6b7f62adf081f25a3",
+          "date": "2016-12-13",
+          "title": "GSP_GPU 显示捕获响应",
+          "url": "https://github.com/JamePeng/citra/commit/da995a4377ba5194ca9759c6b7f62adf081f25a3",
+          "number": 2315,
+          "description": "修正 ImportDisplayCaptureInfo 的 IPC 响应头与返回信息。"
+        },
+        {
+          "sha": "fefa645ec786c5b6b0be1e0615ad2a4841263a58",
+          "date": "2016-11-23",
+          "title": "err:f 错误服务",
+          "url": "https://github.com/JamePeng/citra/commit/fefa645ec786c5b6b0be1e0615ad2a4841263a58",
+          "number": 1654,
+          "description": "重整错误服务的处理代码与信息输出。"
+        },
+        {
+          "sha": "cc7f1155a890e049299911aa54ec82804a2e5347",
+          "date": "2016-10-07",
+          "title": "BOSS 服务接口",
+          "url": "https://github.com/JamePeng/citra/commit/cc7f1155a890e049299911aa54ec82804a2e5347",
+          "number": 2024,
+          "description": "更新 BOSS 服务占位代码。"
+        },
+        {
+          "sha": "47fcd68b01a12143efa92ffa54bc9611fc376fd2",
+          "date": "2016-07-28",
+          "title": "APT 命令修正",
+          "url": "https://github.com/JamePeng/citra/commit/47fcd68b01a12143efa92ffa54bc9611fc376fd2",
+          "number": 1950,
+          "description": "校正 APT 相关命令的接口定义。"
+        },
+        {
+          "sha": "6fa7b1f4863a2e6bde07c3f7ddca3ac52da39757",
+          "date": "2016-07-06",
+          "title": "文件系统错误码",
+          "url": "https://github.com/JamePeng/citra/commit/6fa7b1f4863a2e6bde07c3f7ddca3ac52da39757",
+          "number": 1940,
+          "description": "为未挂载或无效的 archive 句柄返回对应的文件系统错误。"
+        },
+        {
+          "sha": "594bd182b447059bd21d6a79169c19d7cac226f3",
+          "date": "2016-04-30",
+          "title": "NDM 服务补全",
+          "url": "https://github.com/JamePeng/citra/commit/594bd182b447059bd21d6a79169c19d7cac226f3",
+          "number": 1650,
+          "description": "更新 NDM 服务的接口与占位代码。"
+        },
+        {
+          "sha": "8d5a6110f7e253a525b3d7cd62dafeaf67a9c8f3",
+          "date": "2016-04-14",
+          "title": "Y2R tile 边界修复",
+          "url": "https://github.com/JamePeng/citra/commit/8d5a6110f7e253a525b3d7cd62dafeaf67a9c8f3",
+          "number": 1669,
+          "description": "允许 num_tiles 为 128，修正边界条件。"
+        }
+      ],
+      "experiments": [
+        {
+          "sha": "53ab39f6355593d95f7ef01e3e4a6f4def144123",
+          "date": "2016-12-20",
+          "title": "implement APT::AppletUtility function",
+          "url": "https://github.com/JamePeng/citra/commit/53ab39f6355593d95f7ef01e3e4a6f4def144123",
+          "label": "AppletUtility 与 Applet 管理"
+        },
+        {
+          "sha": "bba140a3ce9c54cc8a39933600597889278dc528",
+          "date": "2016-12-20",
+          "title": "Implement FS::ControlArchive and IPC::CheckBufferMappingTranslation",
+          "url": "https://github.com/JamePeng/citra/commit/bba140a3ce9c54cc8a39933600597889278dc528",
+          "label": "FS::ControlArchive 与 IPC buffer 校验"
+        }
+      ]
+    },
+    "tools": [
+      {
+        "period": "2018 — 2019",
+        "title": "Switch 格式与系统工具",
+        "description": "为 hactool 更新 6.0.0 对应的 key revision 信息，修复 NX_Sysmodules 的 libnx 定义与编译兼容，并补充 Atmosphère 库缺失的头文件。",
+        "links": [
+          {
+            "label": "hactool #57",
+            "url": "https://github.com/SciresM/hactool/pull/57",
+            "status": "merged"
+          },
+          {
+            "label": "NX_Sysmodules #26",
+            "url": "https://github.com/Reisyukaku/NX_Sysmodules/pull/26",
+            "status": "merged"
+          },
+          {
+            "label": "NX_Sysmodules #28",
+            "url": "https://github.com/Reisyukaku/NX_Sysmodules/pull/28",
+            "status": "merged"
+          },
+          {
+            "label": "Atmosphère-libs #14",
+            "url": "https://github.com/Atmosphere-NX/Atmosphere-libs/pull/14",
+            "status": "merged"
+          }
+        ]
+      },
+      {
+        "period": "2019 — 2021",
+        "title": "主机工具的兼容维护",
+        "description": "为 ReiNXToolkit 适配 libnx 的存储枚举、SHA256 定义和 WebP 链接选项；为 EdiZon-SE 提交 libnx 4.2.0 编译兼容修复。相关改动保留在工作分支中。",
+        "links": [
+          {
+            "label": "ReiNXToolkit #27",
+            "url": "https://github.com/Reisyukaku/ReiNXToolkit/pull/27",
+            "status": "open"
+          },
+          {
+            "label": "EdiZon-SE #21",
+            "url": "https://github.com/tomvita/EdiZon-SE/pull/21",
+            "status": "open"
+          }
+        ]
+      },
+      {
+        "period": "2021",
+        "title": "PS4 开发辅助脚本",
+        "description": "编写 easy_mira_js，将 Mira 二进制产物整理为 JavaScript；随后加入 GoldHEN 产物处理脚本，把手动转换步骤做成可复用的小工具。",
+        "links": [
+          {
+            "label": "easy_mira_js",
+            "url": "https://github.com/JamePeng/easy_mira_js",
+            "status": "project"
+          },
+          {
+            "label": "GoldHEN 脚本提交",
+            "url": "https://github.com/JamePeng/easy_mira_js/commit/719d5bf8b60d8912a97592f7e0a36ac05972aa4e",
+            "status": "commit"
+          }
+        ]
+      },
+      {
+        "period": "2020",
+        "title": "存档工具与中文体验",
+        "description": "为 JKSV 补充简体中文语言识别、翻译和新增界面字符串，让日常使用的主机工具更易理解。",
+        "links": [
+          {
+            "label": "JKSV #36",
+            "url": "https://github.com/J-D-K/JKSV/pull/36",
+            "status": "merged"
+          },
+          {
+            "label": "JKSV #37",
+            "url": "https://github.com/J-D-K/JKSV/pull/37",
+            "status": "merged"
+          },
+          {
+            "label": "JKSV #40",
+            "url": "https://github.com/J-D-K/JKSV/pull/40",
+            "status": "merged"
+          }
+        ]
+      }
+    ],
+    "toolbox": [
+      {
+        "label": "3DS CRO / CRS · IDA",
+        "url": "https://github.com/JamePeng/IDA_plugin_CRO"
+      },
+      {
+        "label": "Switch NRO · IDA",
+        "url": "https://github.com/JamePeng/SwitchIDAProLoader"
+      },
+      {
+        "label": "Switch 二进制加载器",
+        "url": "https://github.com/JamePeng/loaders"
+      },
+      {
+        "label": "PSP PRX 工具",
+        "url": "https://github.com/JamePeng/prxtool"
+      }
+    ]
+  }
+}

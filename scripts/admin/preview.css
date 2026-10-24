@@ -1,0 +1,41 @@
+body {
+  background: #11100f;
+  padding: 28px;
+}
+body::before {
+  display: none;
+}
+.prose {
+  max-width: 760px;
+  margin: auto;
+}
+.prose > h1:first-child {
+  font-size: 28px;
+  padding-bottom: 22px;
+  margin-top: 0;
+  border-bottom: 1px solid #3a3024;
+}
+.prose table {
+  border-collapse: collapse;
+  max-width: 100%;
+}
+.prose th,
+.prose td {
+  border: 1px solid #3a3024;
+  padding: 8px 12px;
+}
+.prose figure {
+  margin-inline: 0;
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 480px) {
+  body {
+    padding: 20px;
+  }
+  .prose > h1:first-child {
+    font-size: 24px;
+  }
+}

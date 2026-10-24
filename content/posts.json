@@ -1,0 +1,268 @@
+[
+  {
+    "slug": "onebasemultiadapter-chatglm2-6b",
+    "path": "/posts/onebasemultiadapter-chatglm2-6b/",
+    "file": "onebasemultiadapter-chatglm2-6b.html",
+    "title": "OneBaseMultiAdapter：基于ChatGLM2-6B微调训练教程, 金融领域大模型应用与优化",
+    "date": "2023-10-19 22:23",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/q47PjJV3VLS3-RK8qDX2Zg"
+    },
+    "description": "SMP 2023 ChatGLM金融大模型挑战赛 馒头科技队 JamePeng本篇文章对该比赛针对企业年报PDF金融信息问答系统在大模型微调训练部分的心得总结+新手化教程目标受众希望面向自然语言处理（NLP）和机器学习领域的研究人员、学生以及对NLU模型调整和优化感兴趣的技术人员"
+  },
+  {
+    "slug": "llm",
+    "path": "/posts/llm/",
+    "file": "llm.html",
+    "title": "LLM（大型语言模型）技术发展和未来可能突破",
+    "date": "2024-01-07 12:58",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/7tIFrZFw2wIWBBg5ieJ5wg"
+    },
+    "description": "大家好，今天我们来聊一聊LLM（大型语言模型）技术的发展和未来的可能突破。我们发现，通过使用更多的计算力和数据，可以让LLM的表现显著提升。但是，就像吃东西一样，吃得再多也有撑的时候。1. 实时学习 - 像人一样随时学新东西首先，让我们想象一下，如果LLM能够像我们一样，不需要事"
+  },
+  {
+    "slug": "qualcomm-ai-llama-android-demo-app",
+    "path": "/posts/qualcomm-ai-llama-android-demo-app/",
+    "file": "qualcomm-ai-llama-android-demo-app.html",
+    "title": "端侧部署完整流程：如何使用Qualcomm AI加速器构建Llama模型Android Demo APP",
+    "date": "2024-09-17 13:07",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/iGSIXdbQ60LSIj_BWT9MWA"
+    },
+    "description": "前段时间使用的端侧部署方式基本都是CPU推理为主，普遍6-9token每秒，感觉没有利用移动端处理器的AI加速单元，近两年无论是联发科ARM还是高通都在强调自家芯片的NPU单元算力的提升，如果能用上加速器的话必然能够让端侧模型的人机交流更加的高效顺畅。最近，我花了一些时间研究新出"
+  },
+  {
+    "slug": "ktransformers-4090-deepseek-r1-3-28",
+    "path": "/posts/ktransformers-4090-deepseek-r1-3-28/",
+    "file": "ktransformers-4090-deepseek-r1-3-28.html",
+    "title": "KTransformers解析：单卡4090高性价比运行DeepSeek-R1本地推理，速度提升高达3-28倍！",
+    "date": "2025-02-14 01:31",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/IcVSK7jzoxOjTNW70AhsTA"
+    },
+    "description": "大家好，我是JamePeng，今天为大家带来一篇关于KTransformers 0.3版本框架助力单卡3090/4090运行本地推理DeepSeek-R1的解析。随着人工智能技术的飞速发展，DeepSeek-R1作为一款高性能的大语言推理模型，备受关注。DeepSeek-R1是一"
+  },
+  {
+    "slug": "ai-prompt-agent-functioncalling-mcp",
+    "path": "/posts/ai-prompt-agent-functioncalling-mcp/",
+    "file": "ai-prompt-agent-functioncalling-mcp.html",
+    "title": "三分钟热度：了解AI大模型“沟通”与“协作”—— Prompt, Agent, FunctionCalling, MCP 全解析",
+    "date": "2025-05-04 12:30",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/iBuKXSeocvYnJU5UttGJNQ?token=662263903&lang=zh_CN"
+    },
+    "description": "#MCP #Agent #Prompt #FunctionCalling随着人工智能浪潮的汹涌而至，大型语言模型（LLMs）正以前所未有的速度改变着我们的工作和生活。但要真正理解并驾驭这些强大的AI能力，光知道ChatGPT、Claude、Deepseek、Grok这样的应用还不"
+  },
+  {
+    "slug": "deepseek-r1",
+    "path": "/posts/deepseek-r1/",
+    "file": "deepseek-r1.html",
+    "title": "DeepSeek-R1官方最佳实践全解析，让本地部署输出更加高效稳定，千万不能错过！！！！",
+    "date": "2025-02-15 07:30",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/CKjC9PKoXiBjibDQYmPhsA?token=662263903&lang=zh_CN"
+    },
+    "description": "就在过去的20250214这天，DeepSeek官方发布了针对DeepSeek-R1系列模型的最佳实践指南与提示模板，为用户提供了更高效、更精准的使用体验。为什么不同第三方平台部署的DeepSeek-R1的效果会参差不齐。本文将从官方建议、提示模板设计及第三方视角深度解析等角度，"
+  },
+  {
+    "slug": "searxng-search-qwen3-ai",
+    "path": "/posts/searxng-search-qwen3-ai/",
+    "file": "searxng-search-qwen3-ai.html",
+    "title": "Searxng_Search+Qwen3嵌入-重排模型，大幅提升本地部署AI+互联网搜索精准度",
+    "date": "2025-06-15 20:48",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/B62bacVrXwhdR53GY2Q92A"
+    },
+    "description": "嘿，我是JamePeng，一个不定时月更的up主，最近周末赶上台风天没能出去溜达，今天就突发奇想的把最近给AI结合本地部署的SearXNG搜索引擎过程中的一个想法变成一篇笔记！👋想必大家在本地部署大语言模型的时候，是不是发现模型在基于检索匹配的RAG知识问答上相对精准给力，但一"
+  },
+  {
+    "slug": "waic-2025",
+    "path": "/posts/waic-2025/",
+    "file": "waic-2025.html",
+    "title": "杰弗里·辛顿教授WAIC 2025演讲心得：数字智能，未来已来，我们该如何面对？",
+    "date": "2025-07-26 14:14",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/c14lk5S7G4sVL7d8mGTm0Q"
+    },
+    "description": "2025年7月26日上午，今天有幸聆听了“AI教父”杰弗里·辛顿教授在WAIC（世界人工智能大会）上的精彩演讲，感触颇深。辛顿教授以其独到的见解，深入探讨了数字智能与生物智能的异同，特别是对大语言模型（LLMs）的剖析以及对未来超级智能可能带来的挑战与机遇的展望，引发了我对人工智"
+  },
+  {
+    "slug": "3-103-star-mac-mini-clawdbot-moltbot",
+    "path": "/posts/3-103-star-mac-mini-clawdbot-moltbot/",
+    "file": "3-103-star-mac-mini-clawdbot-moltbot.html",
+    "title": "3周103万Star！Mac Mini全网断货，这只“Clawdbot”Moltbot究竟是什么来头？",
+    "date": "2026-01-30 08:11",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/WUb9s10IU0XQvsaAmZnetw"
+    },
+    "description": "大家好，我是 JamePeng。如果说 2023 年是属于 LLM（大模型）的元年，那么 2026 年的这个开局，绝对属于Local Agent（本地代理）。最近几周，JamePeng 的开发者群里炸开了锅。不是因为 DeepSeek 又发了新论文，也不是 OpenAI 又画了什"
+  },
+  {
+    "slug": "gpu-cuda-graphs",
+    "path": "/posts/gpu-cuda-graphs/",
+    "file": "gpu-cuda-graphs.html",
+    "title": "你的GPU在摸鱼？带你认识CUDA Graphs的“提速魔法”",
+    "date": "2026-01-24 17:32",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/-laHzam265OX8FVma5ssTw"
+    },
+    "description": "在如今这个“算力即权力”的时代，大家都在疯抢英伟达的显卡。但JamePeng最近在研究高性能计算时发现了一个有趣的现象：很多时候，你花大价钱买回来的GPU，大部分时间竟然在“摸鱼”？你没听错。并不是显卡不想干活，而是负责指挥它的CPU实在是……太唠叨了。最近技术圈里经常被提及的C"
+  },
+  {
+    "slug": "ai-ai-agent",
+    "path": "/posts/ai-ai-agent/",
+    "file": "ai-ai-agent.html",
+    "title": "当AI不再只是“回答”，而是“行动”的AI Agent",
+    "date": "2025-08-03 21:26",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/Ed69bdIEjtv7RS6PdN1JOg"
+    },
+    "description": "过去几年，当ChatGPT、Claude、Grok、Deepseek、Qwen等这样的“大模型”（LLM）横空出世时，我和许多人一样，惊叹于它们能写诗、能编程、能回答各种复杂问题、甚至帮我蒸馏知识创建训练集。它们就像一位无所不知的智者一样，坐在屏幕的另一端，随时并且永远保持耐心地"
+  },
+  {
+    "slug": "1000-llm-trie",
+    "path": "/posts/1000-llm-trie/",
+    "file": "1000-llm-trie.html",
+    "title": "提速 1000+ 倍！ LLM 缓存算法从“线性遍历”换成“查Trie字典”",
+    "date": "2025-11-02 13:58",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/1H0kDJUR9zZbuGf8QtFpuA"
+    },
+    "description": "Hey，大家好，我是 JamePeng。你有没有遇到过这种抓狂的瞬间？你正和一个 AI 聊得火热，思路泉涌。你紧接着上一句话发了一句：“嗯，这个点子不错，那帮我把它扩写成科幻风格，加入一些赛博朋克的元素。”然后... AI 就开始“转圈圈”了。空气突然安静，你甚至开始怀疑是不是自"
+  },
+  {
+    "slug": "google-turboquant-kv-cache-3-6",
+    "path": "/posts/google-turboquant-kv-cache-3-6/",
+    "file": "google-turboquant-kv-cache-3-6.html",
+    "title": "Google TurboQuant 详解：KV Cache 压缩到 3 比特，内存至少减少 6 倍，精度却完全不变？",
+    "date": "2026-03-27 00:08",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/_SKrdeozJqE3BO9ljMRtZA"
+    },
+    "description": "大家好，我是 JamePeng。最近 Google Research 在 3 月 24 日发布的一篇博客《TurboQuant: Redefining AI efficiency with extreme compression》，让我花了些时间仔细阅读和对照相关论文。这篇文章没"
+  },
+  {
+    "slug": "skills-ai-agent",
+    "path": "/posts/skills-ai-agent/",
+    "file": "skills-ai-agent.html",
+    "title": "干货收藏：Skills太多，AI Agent 变 “迟钝/不好用” 了怎么办？",
+    "date": "2026-07-01 00:32",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/t8fVPq1VqMHZ7gepJT_EeQ"
+    },
+    "description": "从 Skill 描述、分层路由、负样本到召回与重排，梳理工具数量增长后 Agent 的选择问题，以及一个 AI Infra 工程师的实战思考。"
+  },
+  {
+    "slug": "loop-transformer-veda",
+    "path": "/posts/loop-transformer-veda/",
+    "file": "loop-transformer-veda.html",
+    "title": "让模型用同一组层，多想一遍：Loop Transformer 的前沿研究，以及我在 Veda 上看到的机会与边界",
+    "date": "2026-09-26 00:59",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/OogplarWOyPpuLpC2Rm23w"
+    },
+    "description": "同一组层多想一遍，怎样才算把循环变成能力？从公开研究到 Veda 的三组配对实验，记录共享深度的机会、真实成本与验证边界。"
+  },
+  {
+    "slug": "looped-transformers",
+    "path": "/posts/looped-transformers/",
+    "file": "looped-transformers.html",
+    "title": "Looped Transformers：模型不是在“多算几层”，而是在学会反复思考",
+    "date": "2026-10-03 23:15",
+    "category": "随笔",
+    "tags": [],
+    "featured": true,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/zvu0hmGW1sKlXC2Yi65iIA"
+    },
+    "description": "模型早期循环与后期循环之间的差异，能否成为有价值的计算信号？从 LoopCD 出发，理解反复计算、状态差分与隐空间推理。"
+  },
+  {
+    "slug": "instructions-ffu",
+    "title": "关于 WOA 设备使用 FFU 固件刷机操作的中文指引",
+    "path": "/2019/05/10/Instructions-FFU/",
+    "date": "2019-05-10",
+    "updated": "2019-06-03",
+    "category": "技术折腾",
+    "tags": [
+      "Windows on ARM",
+      "Lumia",
+      "刷机指南"
+    ],
+    "description": "让老设备拥有新的可能。翻译并补充 WOA 设备的 FFU 固件刷机指引，记录在 Lumia 上运行 Windows 的一次探索。",
+    "file": "instructions-ffu.html",
+    "featured": false,
+    "cardTitle": [
+      "让 Lumia，",
+      "再跑一次 Windows。"
+    ],
+    "cardDescription": [
+      "WOA 设备 FFU 固件刷机中文指引。",
+      "一次关于老设备与新可能的探索。"
+    ],
+    "cardLabel": "ARM / EXPLORATIONS",
+    "cardNote": "旧设备，新可能。"
+  }
+]

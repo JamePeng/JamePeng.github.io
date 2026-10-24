@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark">
+<title>干货收藏：Skills太多，AI Agent 变 “迟钝/不好用” 了怎么办？ · JamePeng</title><meta name="description" content="从 Skill 描述、分层路由、负样本到召回与重排，梳理工具数量增长后 Agent 的选择问题，以及一个 AI Infra 工程师的实战思考。"><meta property="og:type" content="article"><meta property="og:title" content="干货收藏：Skills太多，AI Agent 变 “迟钝/不好用” 了怎么办？ · JamePeng"><meta property="og:description" content="从 Skill 描述、分层路由、负样本到召回与重排，梳理工具数量增长后 Agent 的选择问题，以及一个 AI Infra 工程师的实战思考。"><meta property="og:url" content="https://jamepeng.github.io/posts/skills-ai-agent/"><meta property="og:site_name" content="JamePeng 的个人博客"><meta name="twitter:card" content="summary"><meta property="og:image" content="https://jamepeng.github.io/assets/avatar.jpg"><meta property="og:image:alt" content="JamePeng 的吉尔伽美什头像"><meta name="twitter:image" content="https://jamepeng.github.io/assets/avatar.jpg"><meta name="theme-color" content="#11100f"><link rel="canonical" href="https://jamepeng.github.io/posts/skills-ai-agent/"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" type="application/rss+xml" title="JamePeng 的博客" href="/feed.xml">
+<script>try{const t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='light'?'light':'dark'}catch{document.documentElement.dataset.theme='dark'}</script><link rel="stylesheet" href="/css/style.css"><script src="/js/main.js" defer></script>
+<meta property="article:published_time" content="2026-06-30T16:32:00.000Z"><meta property="article:modified_time" content="2026-06-30T16:32:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"干货收藏：Skills太多，AI Agent 变 “迟钝/不好用” 了怎么办？","description":"从 Skill 描述、分层路由、负样本到召回与重排，梳理工具数量增长后 Agent 的选择问题，以及一个 AI Infra 工程师的实战思考。","datePublished":"2026-06-30T16:32:00.000Z","dateModified":"2026-06-30T16:32:00.000Z","isBasedOn":"https://mp.weixin.qq.com/s/t8fVPq1VqMHZ7gepJT_EeQ","url":"https://jamepeng.github.io/posts/skills-ai-agent/","author":{"@type":"Person","name":"JamePeng","url":"https://jamepeng.github.io/about/"}}</script></head>
+<body><a class="skip-link" href="#main">跳转到正文</a><div class="site-shell"><header class="site-header"><a class="brand" href="/" aria-label="JamePeng 首页"><img src="/assets/avatar.jpg" width="40" height="40" alt=""><span>JamePeng<span class="brand-dot">.</span></span></a><nav class="main-nav" aria-label="主导航"><a href="/" >首页</a><a href="/archives/" aria-current="page">文章</a><a href="/about/" >关于</a></nav><div class="header-actions"><button class="search-trigger icon-button" type="button" aria-label="搜索文章（Ctrl 或 Command 加 K）"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><kbd>Ctrl K</kbd></button><span class="action-divider"></span><button class="theme-toggle icon-button" type="button" aria-label="切换深浅主题"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button></div></header>
+<main id="main" tabindex="-1"><div class="reading-progress" aria-hidden="true"></div><section class="article-heading" id="top"><a class="text-link" href="/archives/">← 返回文章归档</a><div class="post-meta"><span>随笔</span><span class="meta-dot">·</span><time datetime="2026-06-30T16:32:00.000Z" title="发布时间（北京时间）">2026.07.01 00:32</time><span class="meta-dot">·</span><span>9 分钟阅读</span></div><h1>干货收藏：Skills太多，AI Agent 变 “迟钝/不好用” 了怎么办？</h1><p>从 Skill 描述、分层路由、负样本到召回与重排，梳理工具数量增长后 Agent 的选择问题，以及一个 AI Infra 工程师的实战思考。</p><div class="article-byline"><img class="byline-avatar" src="/assets/avatar.jpg" width="30" height="30" alt=""><span>JamePeng</span></div><p class="article-source">原载于 <a href="https://mp.weixin.qq.com/s/t8fVPq1VqMHZ7gepJT_EeQ" target="_blank" rel="noopener noreferrer">澄鸿AI踢桃 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></p></section><div class="article-layout"><article class="prose"><div class="article-body"><p class="article-kicker">干货收藏：Skills太多，AI Agent变“迟钝”了怎么办？</p><p class="article-lead">
+    一个AI Infra工程师视角下的 Agent / Skill Router 实战思考&#160;
+  </p><p class="article-note">
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/assets/Expression/Expression_5@2x.png#imgIndex=0" alt="图片">可以点赞推荐收藏，方便随时慢慢看<img referrerpolicy="no-referrer" loading="lazy" src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/assets/newemoji/2_04.png#imgIndex=1" alt="图片">
+  </p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymlsx0be5o3hdAB12kN7gTPtjCVBjib56nic1GyFrjibmLNKHBS0FwphLkcFb64ldEsmueTG90T4Umpv8fjgWxfCmD4ibJFQDVqXVibE/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=2" alt="一个AI Infra工程师视角下的 Agent / Skill Router 实战思考 · 原文配图">
+  </figure><h2 id="section-33">一、当你的 Agent 有 100 个 Skills，它开始“乱选工具”</h2><p>
+    我第一次明显感受到问题，是在一个 Agent 系统从 12 个 Skills 扩展到 87 个
+    Skills ，甚至上百个Skills 的时候。
+  </p><p>原本很稳定的Agent系统开始出现一些奇怪现象：</p><ul>
+    <li>明明该用 web_search，却调用了 memory_search&#160;</li>
+    <li>明明是GEO数据分析任务，却跑去执行了“写作 skill”</li>
+    <li>同一个问题，每次选的 tool 都不一样</li>
+    <li>token 消耗突然上涨 2～3 倍，用户体感可能只是几句话</li>
+    <li>latency 明显变长, 从思考到回答输出变得很久</li>
+  </ul><p>更致命的是：<strong>用户感知是“AI变笨了”。</strong></p><p>但我们内部知道——它不是变笨了，而是：</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymnLwlHZuZ6EIdURfPgBcVwlT5g1GdnSOfr9nWc4Y45yibMUaFWMy7U6cZIqZXwpht8naia9ReyjXBtSDq8rCJZWibrenicIUfPnKY0/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=3" alt="一个AI Infra工程师视角下的 Agent / Skill Router 实战思考 · 原文配图">
+  </figure><blockquote class="article-takeaway">
+    <p>Skill 太多之后，“选择问题”压垮了模型。</p>
+  </blockquote><h2 id="section-3">
+    二. AI Agent 与 Skill 的演化：从“函数调用”到“工具生态爆炸”
+  </h2><p>回顾一下 Agent 的发展路径，其实非常清晰：</p><h3 id="section-4">1.0 工具调用时代</h3><ul>
+    <li>function calling</li>
+    <li>1-5 个工具</li>
+    <li>prompt hardcode routing</li>
+  </ul><h3 id="section-5">2.0 Skill 化时代</h3><ul>
+    <li>tools → skills</li>
+    <li>每个 skill 封装一个能力域</li>
+    <li>开始“可扩展系统设计”</li>
+  </ul><h3 id="section-6">3.0 Agent 生态爆炸</h3><ul>
+    <li>50 → 100 → 300+ skills</li>
+    <li>plugin marketplace</li>
+    <li>multi-agent + sub-agent + workflow</li>
+  </ul><p>问题也在这一阶段开始出现：</p><blockquote>
+    <p><strong>我们把“能力增强”，错误地等价成了“全部塞给模型”。</strong></p>
+  </blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymlGm19QnTkYibWEJK0BrZddH0mapia2rFJs86AbwRSnEXfhCwfNgTA2jr7lYpGfG2e5FV0D1kop95UgwZT6vrIGQMhpUicbMmetow/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=4" alt="3.0 Agent 生态爆炸 · 原文配图">
+  </figure><p>
+    当然接下来即将迎接Loop生态，把 AI Agent
+    从“被人提示的一次性工具”，升级为“在规则、工具、记忆和验证机制中持续运行的工作系统”。后面会另外开一期介绍Loop
+    Engineering。
+  </p><h2 id="section-7">三、核心问题：Skill 多了之后，Agent 反而变差了</h2><p>我们可以把问题拆成四个层面：</p><h3 id="section-8">① 命中率下降（Selection Dilution）</h3><p>Skill 越多，每个 skill 的“被选概率”越低。</p><p>模型开始出现：</p><ul>
+    <li>语义相似 skill 混淆</li>
+    <li>轻微 prompt shift → tool 完全不同</li>
+    <li>决策边界模糊</li>
+  </ul><h3 id="section-9">② “抽风式调用”</h3><p>典型症状：</p><ul>
+    <li>本该调用 A，却调用 B</li>
+    <li>同一输入不同输出路径</li>
+    <li>tool selection 不稳定</li>
+  </ul><p>本质是：</p><blockquote>
+    <p><strong>softmax over too many candidates → entropy 爆炸</strong></p>
+  </blockquote><h3 id="section-10">③ Token &amp; 时间成本暴涨</h3><p>Skill 多之后，通常会发生：</p><ul>
+    <li>prompt 中塞入所有 skill description</li>
+    <li>或 rerank 前做 full list scoring</li>
+  </ul><p>结果：</p><ul>
+    <li>prompt token ×10</li>
+    <li>routing latency ×2~5</li>
+    <li>cache 命中率下降</li>
+  </ul><h3 id="section-11">④ 系统维护复杂度上升</h3><ul>
+    <li>skill 之间冲突</li>
+    <li>description drift</li>
+    <li>新 skill 不敢加（怕破坏 routing）</li>
+  </ul><p>最终系统进入“冻结状态”。</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymnic8WDM424zpZfHQypcCLGNURHquRBMs873Fyqx1epohg4IWAia5M2dPpicFYnu9MNZ4W1Jz9ACKu9nd4NIQzqagX9Pz3ftxyXDk/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=5" alt="④ 系统维护复杂度上升 · 原文配图">
+  </figure><h2 id="section-12">四、关键认知升级：Skill Routing 本质是一个检索问题</h2><p>很多团队卡住的核心误区是：</p><blockquote><p>“让模型自己选 skill”</p></blockquote><p>但从工程角度看，本质是：</p><blockquote>
+    <p><strong>Skill routing = Retrieval + Ranking problem</strong></p>
+  </blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymkPBB0Agia96zoMa8X6GkZuzg79M1icX2mTTWFnEIUyyTwJEMlMRmCK1C5ObMcRYWeosG7TwhWAIAacQibviadhjN33Z9ZRsBeKJAU/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=6" alt="四、关键认知升级：Skill Routing 本质是一个检索问题 · 原文配图">
+  </figure><p>我们可以这样拆解：</p><h3 id="section-13">Step 1：Candidate Retrieval（召回）</h3><ul>
+    <li>Embedding similarity</li>
+    <li>Keyword match</li>
+    <li>Metadata filter</li>
+  </ul><h3 id="section-14">Step 2：Ranking（排序）</h3><ul>
+    <li>Cross encoder</li>
+    <li>LLM re-rank</li>
+    <li>Rule boost</li>
+  </ul><h3 id="section-15">Step 3：Execution（执行）</h3><ul>
+    <li>Top-1 or Top-k skill execution</li>
+  </ul><p>所以问题本质变成：</p><blockquote>
+    <p><strong>不是“模型会不会选”，而是“有没有把候选空间控制好”。</strong></p>
+  </blockquote><h2 id="section-16">五、四个实战方法：解决 Skill 太多导致 Agent 变笨</h2><p>下面是我们在实际系统中验证过的四种方法。</p><h3 id="section-17">方法一：优化 Skill 描述（让它“可被检索”）</h3><p>很多 skill 失败的根源是：</p><blockquote><p>description 写得像文档，不像检索信号。</p></blockquote><h4 id="section-18">❌ 错误写法：</h4><blockquote>
+    <p>
+      “This tool is used for processing user queries and returning structured
+      output...”
+    </p>
+  </blockquote><h4 id="section-19">✅ 正确写法：</h4><ul>
+    <li>明确触发场景</li>
+    <li>明确输入边界</li>
+    <li>明确“不适用情况”</li>
+  </ul><h4 id="section-20">推荐结构：</h4><pre><code>WHEN: 什么时候用
+INPUT: 输入是什么
+DO: 做什么
+NOT: 什么时候不要用</code></pre><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymlhGPaDMnSvouej7XvvbAT8HFSu5aQCtbaxaFlLgYmkBEl3m9dVZvV0z0zKTrG8mmia5Jib6N2xcDgsjUsNL2OD602rhSibdJ7c0k/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=7" alt="图片">
+  </figure><h3 id="section-22">方法二：Skill Tree 分层路由（先分类，再选择）</h3><p>不要让模型直接从 100 个 skill 里选。</p><p>应该是：</p><pre><code>Router L1：领域分类
+   ├── Search
+   ├── Coding
+   ├── Calendar
+   ├── Finance
+
+Router L2：具体 skill
+   ├── WebSearchSkill
+   ├── DeepSearchSkill</code></pre><p>优势：</p><ul>
+    <li>降低候选空间</li>
+    <li>提高稳定性</li>
+    <li>可解释性增强</li>
+  </ul><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymntgg8bGpTwUkhoU5bB1ic1Np2CrGTE4jAkPVibgGic1xeexVzlIp5RncKxZKia6Ita7iceENxP4opp0qqt08YZKJcAFCr1Ag74wxog/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=8" alt="方法二：Skill Tree 分层路由（先分类，再选择） · 原文配图">
+    <figcaption>Skill Tree 分层路由</figcaption>
+  </figure><h3 id="section-23">方法三：加入 Negative Samples（明确“不要用我”）</h3><p>这是很多系统忽略的关键点。</p><p>Skill description 不只要写：</p><blockquote><p>WHEN TO USE</p></blockquote><p>还要写：</p><blockquote><p>WHEN NOT TO USE ME</p></blockquote><p>例如：</p><pre><code>DO NOT USE ME WHEN:
+- task is summarization（任务是摘要生成）
+- task is classification only（任务仅为分类）
+- user intent is conversational reply（用户意图是对话式回复，这个挺重要！！！）</code></pre><p>本质作用：</p><blockquote><p>降低“语义误触发”</p></blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/mmbiz_png/uJ8AuZovymnXvEQFcVibkxqiaFjcj7Am9FkUEgrMgKSZOoVltWhS038zzuPDM6hBlRAy7jCsdEhp5XZIZ2tVDHpxCOKu4ghlHS6icpsGgqKuDE/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=9" alt="方法三：加入 Negative Samples（明确“不要用我”） · 原文配图">
+  </figure><h3 id="section-24">方法四：召回 + 重排（让 Skill Routing 变成搜索系统）</h3><p>这是最关键的一步</p><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymkQRITQ9dmmVYvXRfQFjN2PoSicb3OqAPtUs9TqyOl97l5ibMjMVytobOzqJkgxG74o9v9LSqbAyFTCPmCF5Grcz3EAicibtvzBZhE/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=10" alt="方法四：召回 + 重排（让 Skill Routing 变成搜索系统） · 原文配图">
+  </figure><h4 id="section-25">标准 pipeline：</h4><h5 id="section-26">① Recall（Top 20）</h5><ul>
+    <li>Embedding search</li>
+    <li>BM25</li>
+    <li>Metadata filter</li>
+  </ul><h5 id="section-27">② Rerank（Top 5）</h5><ul>
+    <li>Cross encoder</li>
+    <li>LLM scoring</li>
+  </ul><h5 id="section-28">③ Final pick（Top 1-2）</h5><p>为什么必须这样做？</p><p>因为：</p><blockquote>
+    <p>
+      <strong>Skill routing 不是 reasoning problem，而是 ranking problem。</strong>
+    </p>
+  </blockquote><h2 id="section-30">六、一个工程建议：不要让 Prompt 承担 Routing</h2><p>很多系统的失败来自：</p><blockquote><p>把 routing 逻辑写进 prompt</p></blockquote><p>这会导致：</p><ul>
+    <li>prompt 爆炸，让简单会话的上下文很长</li>
+    <li>会话越长越不稳定</li>
+    <li>LLM注意力不可控</li>
+  </ul><p>更好的结构：</p><pre><code>LLM
+↓
+Router Service (embedding + rerank + rules)
+↓
+Skill Executor (assemble the top 3–5 skills.)</code></pre><h2 id="section-31">七、一个简单 checklist（可以直接落地）</h2><p>如果你现在有 Agent + Skills 系统，可以检查：</p><ul>
+    <li>skill 是否有 WHEN/NOT WHEN</li>
+    <li>是否存在 skill tree</li>
+    <li>是否做过 retrieval filtering</li>
+    <li>是否有 rerank</li>
+    <li>prompt 是否超过 10 Skills，避免一股脑加载几十几百Skills</li>
+    <li>是否测过 routing accuracy</li>
+    <li>判断skills之间的描述是否有相似的歧义</li>
+  </ul><h2 id="section-32">结尾：真正的问题不是 Skill 太多，而是“没有路由系统”</h2><p>很多团队一开始以为：</p><blockquote><p>“多加 skill = 能力增强”</p></blockquote><p>但真实情况是，当把各种各样的Skills抽象地越来越多的时候：</p><blockquote>
+    <p><strong>没有 routing 的 skill 增长 = 系统退化</strong></p>
+  </blockquote><p>Agent 的上限，从来不是 model capability，而是：</p><blockquote>
+    <p><strong>你如何组织它的选择空间。</strong></p>
+  </blockquote><figure>
+    <img referrerpolicy="no-referrer" loading="lazy" src="https://mmbiz.qpic.cn/sz_mmbiz_png/uJ8AuZovymlDnsFwcLk5QYzs57yMdVeRJFhK2ACEDAXQ9ZbuHCj4rHxDLDrbEkt81ChyVIPIfvGwEnJR3s1Ag3rjiblARDOr64X1Ykpxk1ibM/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=11" alt="结尾：真正的问题不是 Skill 太多，而是“没有路由系统” · 原文配图">
+  </figure><p>
+    当然还需要对已有的Skills进行日常的排查，及时对高相似度的Skills合并和条件补充，并对描述过于相似但功能不同的Skills进行差异性优化错开他们的使用，只有结合使用反馈不断优化，才能减少不必要的Token消耗，打造一个稳定高效的AI
+    Agents System。
+  </p></div>
+<div class="article-end"><span>本文完</span><button type="button" class="copy-link text-link">复制文章链接 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></button></div><a class="next-post" href="/posts/looped-transformers/"><span class="mini-label">继续阅读</span><h2>Looped Transformers：模型不是在“多算几层”，而是在学会反复思考 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></h2></a></article><aside class="toc"><span class="mini-label">ON THIS PAGE / 目录</span><nav aria-label="文章目录"><a class="toc-level-2" href="#section-33">一、当你的 Agent 有 100 个 Skills，它开始“乱选工具”</a><a class="toc-level-2" href="#section-3">二. AI Agent 与 Skill 的演化：从“函数调用”到“工具生态爆炸”</a><a class="toc-level-3" href="#section-4">1.0 工具调用时代</a><a class="toc-level-3" href="#section-5">2.0 Skill 化时代</a><a class="toc-level-3" href="#section-6">3.0 Agent 生态爆炸</a><a class="toc-level-2" href="#section-7">三、核心问题：Skill 多了之后，Agent 反而变差了</a><a class="toc-level-3" href="#section-8">① 命中率下降（Selection Dilution）</a><a class="toc-level-3" href="#section-9">② “抽风式调用”</a><a class="toc-level-3" href="#section-10">③ Token &amp; 时间成本暴涨</a><a class="toc-level-3" href="#section-11">④ 系统维护复杂度上升</a><a class="toc-level-2" href="#section-12">四、关键认知升级：Skill Routing 本质是一个检索问题</a><a class="toc-level-3" href="#section-13">Step 1：Candidate Retrieval（召回）</a><a class="toc-level-3" href="#section-14">Step 2：Ranking（排序）</a><a class="toc-level-3" href="#section-15">Step 3：Execution（执行）</a><a class="toc-level-2" href="#section-16">五、四个实战方法：解决 Skill 太多导致 Agent 变笨</a><a class="toc-level-3" href="#section-17">方法一：优化 Skill 描述（让它“可被检索”）</a><a class="toc-level-3" href="#section-22">方法二：Skill Tree 分层路由（先分类，再选择）</a><a class="toc-level-3" href="#section-23">方法三：加入 Negative Samples（明确“不要用我”）</a><a class="toc-level-3" href="#section-24">方法四：召回 + 重排（让 Skill Routing 变成搜索系统）</a><a class="toc-level-2" href="#section-30">六、一个工程建议：不要让 Prompt 承担 Routing</a><a class="toc-level-2" href="#section-31">七、一个简单 checklist（可以直接落地）</a><a class="toc-level-2" href="#section-32">结尾：真正的问题不是 Skill 太多，而是“没有路由系统”</a></nav><a class="text-link toc-top" href="#top">回到顶部 ↑</a></aside></div></main><footer class="site-footer"><div><a class="footer-name" href="/">JamePeng.</a><span>© 2019–2026 · 技术笔记与开源记录</span></div><div class="footer-links"><a href="https://github.com/JamePeng" target="_blank" rel="noopener noreferrer">GitHub <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a href="/feed.xml">RSS <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="19" r="1"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/></svg></a><a href="#top" class="back-top">回到顶部 ↑</a></div></footer></div>
+<dialog class="search-dialog" aria-labelledby="search-title"><div class="search-dialog-top"><h2 id="search-title">搜索文章与项目</h2><button class="search-close icon-button" aria-label="关闭搜索" type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><div class="search-input-wrap"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="search-input" type="search" placeholder="标题、关键词、项目名…" autocomplete="off" aria-label="搜索文章"></div><div id="search-results" aria-live="polite"></div><div class="search-hint"><span>搜索文章正文与项目记录</span><span><kbd>Esc</kbd> 关闭</span></div></dialog><div class="toast" role="status" aria-live="polite"></div></body></html>
