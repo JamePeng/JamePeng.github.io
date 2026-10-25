@@ -1,5 +1,20 @@
 [
   {
+    "slug": "deepinfer-ai-infra",
+    "path": "/posts/deepinfer-ai-infra/",
+    "file": "deepinfer-ai-infra.html",
+    "title": "DeepInfer开源之后：AI Infra正在从算力竞争走向数据搬运与状态池化",
+    "date": "2026-10-25 12:11",
+    "category": "随笔",
+    "tags": [],
+    "featured": true,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/1jxLtj5IcsKMdZkq4gCIvw"
+    },
+    "description": "从 Shared-Nothing、存算分离到 KV Cache Pooling，重新理解下一代 AI 推理基础设施"
+  },
+  {
     "slug": "onebasemultiadapter-chatglm2-6b",
     "path": "/posts/onebasemultiadapter-chatglm2-6b/",
     "file": "onebasemultiadapter-chatglm2-6b.html",
@@ -232,7 +247,7 @@
     "date": "2026-10-03 23:15",
     "category": "随笔",
     "tags": [],
-    "featured": true,
+    "featured": false,
     "source": {
       "name": "澄鸿AI踢桃",
       "url": "https://mp.weixin.qq.com/s/zvu0hmGW1sKlXC2Yi65iIA"

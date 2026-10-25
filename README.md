@@ -86,13 +86,13 @@ npm run admin
 
 关于页以 `llama-cpp-python` 维护分支为重点，展示维护方向、代表性提交、上游 PR 和有本人提交的仓库记录。资料保存在 `content/github-contributions.json`，由 `scripts/about-page.mjs` 渲染，执行 `npm run build` 后同步更新关于页和搜索索引。
 
-“维护以来的版本演进”按维护分支 Changelog 整理，从 2025 年 3 月维护初期的 `0.3.8` 到 `0.4.3`，共 46 个版本，包含上游同步与社区协作。`releaseHistory.releases` 保存版本号、中文变化摘要、原文行号链接及可用的代码差异链接；最近的 `0.4.x` 默认展示，`0.3.x` 按阶段折叠。原始 Changelog 没有标注的发布日期不推断补写。更新时核对源日志、相应版本内容和原文行号，再更新 `releaseHistory.checkedAt` 并重新生成。
+“维护以来的版本演进”按维护分支 Changelog 整理，从 2025 年 3 月维护初期的 `0.3.8` 到 `0.4.5`，共 48 个版本，包含上游同步与社区协作。`releaseHistory.releases` 保存版本号、中文变化摘要、固定到源提交的原文行号链接、发布页面及可用的代码差异链接；最近的 `0.4.x` 默认展示，`0.3.x` 按阶段折叠。原始 Changelog 没有标注的发布日期不推断补写。新增版本时，所有原文行号链接应一并对齐到本次源提交，避免日志插入新内容后定位偏移；核对版本内容，再更新 `releaseHistory.checkedAt` 并重新生成。
 
 “模拟器与逆向”作为独立主板块，由 `systemsWork` 提供资料。Citra 的 12 条历史合入记录通过保留下来的 Git 历史核实：10 条明确来自 JamePeng 分支的合并提交，另有带 PR 编号的 AM、Y2R 提交；默认展示 6 条，其余可展开。14 条默认分支作者提交与跨分支的 27 个提交对象不是同一口径，后者可能包含同一改动的重写版本，不作为独立功能数展示。Applet、文件系统的工作分支实验另列。
 
 系统工具经历覆盖 hactool、NX_Sysmodules、Atmosphère-libs、ReiNXToolkit、EdiZon-SE、easy_mira_js 与 JKSV。ReiNXToolkit / EdiZon-SE 的本人工作分支与未合并 PR 在该板块展示，不混入默认分支统计。IDA 等仅 Fork 收藏、未核实本人代码改动的仓库标为“研究工具收藏”，不作为原创实现或已合入贡献。Citra 的早期上游 PR 页面不能作为稳定入口时，链接到保留该记录的提交页面。
 
-当前为 2026-10-24 核实的公开记录快照：检查账号下 43 个公开仓库，14 个默认分支包含 GitHub 关联作者为 JamePeng 的提交；`JamePeng/llama-cpp-python` 默认分支有 1,008 条。合并提交计入数量，Fork 之间不累加；其他分支与私有仓库不在统计范围内。页面不在访问时请求 GitHub。
+基础仓库统计核实于 2026-10-24：检查账号下 43 个公开仓库，14 个默认分支包含 GitHub 关联作者为 JamePeng 的提交。`JamePeng/llama-cpp-python` 单独于 2026-10-25 更新，默认分支有 1,012 条本人提交，最新版本为 `0.4.5`；其他仓库与 PR 保留各自原有核实日期。合并提交计入数量，Fork 之间不累加；其他分支与私有仓库不在统计范围内。页面不在访问时请求 GitHub。
 
 后续更新资料时，按 GitHub API 的仓库默认分支与 `author=JamePeng` 分页结果核实提交数，更新仓库的 `count`、`latest` 和 `checkedAt`；PR 应检查 `merged_at`，不能仅凭 `closed` 状态视为已合并。维护分支中的成果与向原项目提交的 PR 分别展示。
 
