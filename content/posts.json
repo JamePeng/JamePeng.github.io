@@ -1,5 +1,20 @@
 [
   {
+    "slug": "loop-transformer-muon-hybrid-muon",
+    "path": "/posts/loop-transformer-muon-hybrid-muon/",
+    "file": "loop-transformer-muon-hybrid-muon.html",
+    "title": "我从 Loop Transformer 实验中探索更高效的 Muon 优化器 | Hybrid Muon 正式开源",
+    "date": "2026-11-21 12:35",
+    "category": "随笔",
+    "tags": [],
+    "featured": true,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/YiCGrdx67FYuSCjFNqk-DA"
+    },
+    "description": "从2024年开始训练 Veda 时，我持续为它整理了一套高质量 CoT（思维链）问答数据。每道题除了最终答案，还保留了解题过程。我写的 Qwen 监督微调脚本，就是用这些数据训练模型，让它学习怎样把一道题一步步解出来。"
+  },
+  {
     "slug": "deepinfer-ai-infra",
     "path": "/posts/deepinfer-ai-infra/",
     "file": "deepinfer-ai-infra.html",
@@ -7,7 +22,7 @@
     "date": "2026-10-25 12:11",
     "category": "随笔",
     "tags": [],
-    "featured": true,
+    "featured": false,
     "source": {
       "name": "澄鸿AI踢桃",
       "url": "https://mp.weixin.qq.com/s/1jxLtj5IcsKMdZkq4gCIvw"
