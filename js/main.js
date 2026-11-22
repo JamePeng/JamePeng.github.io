@@ -1,3 +1,32 @@
+function initializeBlogAnalytics() {
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (location.origin !== "https://jamepeng.github.io" || !canonical) return;
+  const page = new URL(canonical.href);
+  if (page.origin !== location.origin || page.pathname === "/404.html") return;
+
+  const measurementId = "G-05X46NSHFR";
+  const isArticle = document.querySelector('meta[property="og:type"]')?.content === "article";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  // GA4 sends the initial page_view automatically on config.
+  gtag("config", measurementId, {
+    page_location: page.origin + page.pathname,
+    page_referrer: "",
+    content_group: isArticle ? "article" : "site",
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+  const tag = document.createElement("script");
+  tag.async = true;
+  tag.referrerPolicy = "no-referrer";
+  tag.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+  document.head.appendChild(tag);
+}
+initializeBlogAnalytics();
+
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [
