@@ -103,7 +103,7 @@ const featureDescription = (featured.cardDescription ?? [featured.description])
 const home = `<section class="hero" id="top"><div class="hero-copy"><div class="eyebrow"><span class="tiny-star">✦</span> JAMEPENG / NOTES & CODE</div><p class="hero-kicker">开源维护 · 模拟器与逆向 · 本地推理</p><h1>折腾过的东西，<br><span class="hero-accent">记在这里。</span></h1><p class="hero-description">我是 JamePeng。<br>写过模拟器和主机工具，<br class="mobile-break">现在也维护本地推理项目。</p><div class="hero-links"><a class="primary-link" href="#writing">查看文章 ${icon("arrow")}</a><a class="quiet-link" href="${site.github}" target="_blank" rel="noopener noreferrer">${icon("github")} GitHub ${icon("external")}</a></div><div class="hero-footnote"><span class="status-dot"></span> 代码、工具和实践记录 <span class="since">EST. 2019</span></div></div>${treasuryArt}</section>
 <div class="home-content"><div class="writing-column"><section class="featured-section"><div class="section-heading"><h2><span class="section-index">01 /</span> 精选文章</h2><span class="section-label">SELECTED POSTS</span></div><a class="featured-card" href="${featured.path}"><div class="feature-illustration" aria-hidden="true"><span class="feature-symbol">{ }</span><span class="feature-code">${esc(featured.cardLabel ?? "NOTES / CODE")}</span><span class="feature-vertical">${esc(featured.cardNote ?? "项目与实践记录")}</span><span class="feature-orbit"></span></div><div class="feature-copy"><span class="feature-badge">${esc(featured.category)} <span>↗</span></span><h3>${featureHeading}</h3><p>${featureDescription}</p><div class="feature-bottom"><time datetime="${featured.publishedAt}" title="发布时间（北京时间）">${featured.displayDate}</time><span>阅读文章 ${icon("arrow")}</span></div></div></a></section>
 <section class="writing-section" id="writing"><div class="section-heading"><h2><span class="section-index">02 /</span> 文章列表</h2><a class="text-link" href="/archives/">全部归档 ${icon("arrow")}</a></div><div class="filter-bar" role="group" aria-label="按分类筛选文章"><button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">全部 <span>${String(posts.length).padStart(2, "0")}</span></button>${[...new Set(posts.map((p) => p.category))].map((category) => `<button type="button" class="filter-chip" data-filter="${esc(category)}" aria-pressed="false">${esc(category)}</button>`).join("")}</div><div class="post-list">${posts.map(row).join("")}</div><p class="list-end"><span></span> JamePeng · Notes <span></span></p></section></div>
-<aside class="home-sidebar"><section class="about-card"><div class="mini-label">ABOUT / JAMEPENG</div><div class="profile-line"><img class="profile-avatar" src="/assets/avatar.jpg" width="52" height="52" alt="JamePeng 的头像" loading="lazy"><div><h2>JamePeng</h2><span>写代码，也记笔记。</span></div></div><p>参与过 Citra 和主机工具开发，长期维护 llama-cpp-python。这里记录遇到的问题、解决方法，以及一些研究笔记。</p><a class="text-link" href="/about/">关于我 ${icon("arrow")}</a><div class="profile-stats"><div><strong>${String(posts.length).padStart(2, "0")}</strong><span>篇文章</span></div><div><strong>2019</strong><span>从这里开始</span></div></div></section><section class="note-card"><span class="note-pin" aria-hidden="true"></span><span class="mini-label">吉尔伽美什史诗</span><p>乌鲁克的王，<br>曾踏上寻找永生的旅程。</p><a class="note-signature" href="/about/#gilgamesh-epic">THE EPIC OF GILGAMESH ↗</a><svg viewBox="0 0 60 40" aria-hidden="true"><path d="M4 28c17-22 37-22 43-9s-25 22-19 6 25-12 28-8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></section><a class="rss-card" href="/feed.xml"><span class="rss-icon">${icon("rss")}</span><span><strong>RSS 订阅</strong><small>在阅读器中接收新文章。</small></span>${icon("external")}</a></aside></div>`;
+<aside class="home-sidebar"><section class="about-card"><div class="mini-label">ABOUT / JAMEPENG</div><div class="profile-line"><img class="profile-avatar" src="/assets/avatar.jpg" width="52" height="52" alt="JamePeng 的头像" loading="lazy"><div><h2>JamePeng</h2><span>写代码，也记笔记。</span></div></div><p>参与过 Citra 和主机工具开发，长期维护 llama-cpp-python。最近在 hybrid_muon 中整理训练优化方法与对照实验。</p><a class="text-link" href="/about/">关于我 ${icon("arrow")}</a><div class="profile-stats"><div><strong>${String(posts.length).padStart(2, "0")}</strong><span>篇文章</span></div><div><strong>2019</strong><span>从这里开始</span></div></div></section><section class="note-card"><span class="note-pin" aria-hidden="true"></span><span class="mini-label">吉尔伽美什史诗</span><p>乌鲁克的王，<br>曾踏上寻找永生的旅程。</p><a class="note-signature" href="/about/#gilgamesh-epic">THE EPIC OF GILGAMESH ↗</a><svg viewBox="0 0 60 40" aria-hidden="true"><path d="M4 28c17-22 37-22 43-9s-25 22-19 6 25-12 28-8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></section><a class="rss-card" href="/feed.xml"><span class="rss-icon">${icon("rss")}</span><span><strong>RSS 订阅</strong><small>在阅读器中接收新文章。</small></span>${icon("external")}</a></aside></div>`;
 write("index.html", layout({ body: home }));
 const years = [...new Set(posts.map((p) => p.date.slice(0, 4)))];
 const activeArchivePaths = [
@@ -193,8 +193,10 @@ for (const post of posts) {
     }),
   );
 }
+const aboutData = JSON.parse(read("github-contributions.json"));
 const aboutBody = renderAbout({
-  data: JSON.parse(read("github-contributions.json")),
+  data: aboutData,
+  benchmarkResults: JSON.parse(readFileSync(resolve(root, "." + aboutData.researchWork.benchmark.dataPath), "utf8")),
   portrait: treasuryArt,
   epic: read("gilgamesh.html"),
   esc,
@@ -204,7 +206,7 @@ write(
   "about/index.html",
   layout({
     title: "关于 · JamePeng 的开源维护与贡献",
-    description: "JamePeng 的开源与技术经历：从 Citra 的 3DS 系统服务、主机工具与逆向探索，到 llama-cpp-python 的本地推理、多模态与运行时维护，附公开提交、历史合入与 PR 记录。",
+    description: "JamePeng 的训练优化研究与开源实践：hybrid_muon 混合优化器、Qwen 微调对照实验、llama-cpp-python 维护，以及 Citra、主机工具与逆向贡献，附源码、实验数据和公开提交。",
     path: "/about/",
     active: "about",
     body: aboutBody,
@@ -233,7 +235,7 @@ write(
       {
         title: "关于 · 开源维护与贡献",
         path: "about/",
-        description: "JamePeng 的 Citra、模拟器与逆向经历、主机工具贡献，以及 llama-cpp-python 维护记录。",
+        description: "hybrid_muon 混合优化器与训练实验、llama-cpp-python 维护，以及 JamePeng 的 Citra、模拟器与逆向经历。",
         text: textOf(aboutBody),
       },
     ],
