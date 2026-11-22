@@ -1,5 +1,20 @@
 [
   {
+    "slug": "inkling-2-mini-moe-24-48",
+    "path": "/posts/inkling-2-mini-moe-24-48/",
+    "file": "inkling-2-mini-moe-24-48.html",
+    "title": "拆解 Inkling 2 Mini 的循环 MoE：24 层权重，48 层计算深度",
+    "date": "2026-11-22 22:14",
+    "category": "随笔",
+    "tags": [],
+    "featured": false,
+    "source": {
+      "name": "澄鸿AI踢桃",
+      "url": "https://mp.weixin.qq.com/s/dVJWSERFJqOBTngxkoqnWg"
+    },
+    "description": "拆解 Inkling 2 Mini 如何在训练时精简专家，推理时让中间 12 层跑三遍，用 24 层权重完成 48 层计算。百万上下文要多少缓存？我们算清这笔账，再用 RTX 5090 实测生成速度和显存占用。"
+  },
+  {
     "slug": "loop-transformer-muon-hybrid-muon",
     "path": "/posts/loop-transformer-muon-hybrid-muon/",
     "file": "loop-transformer-muon-hybrid-muon.html",
